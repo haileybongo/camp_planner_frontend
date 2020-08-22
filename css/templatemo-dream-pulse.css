@@ -474,7 +474,7 @@ figure.effect-bubba:hover p {
 }
 
 .tm-w-80 {
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .tm-flex-item-left {
@@ -652,7 +652,7 @@ figure.effect-bubba:hover p {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 2000px) {
   .tm-section {
     padding: 30px;
   }

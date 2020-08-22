@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <title>Dream Pulse TemplateMo</title>
+    <title>Camp Planner</title>
 <!--
 DREAM PULSE
 https://templatemo.com/tm-536-dream-pulse
@@ -22,6 +22,8 @@ https://templatemo.com/tm-536-dream-pulse
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
+
+    <!-- Sets up page and sidebar -->
     <main class="container-fluid">
       <div class="row">        
           <nav id="tmSidebar" class="tm-bg-black-transparent tm-sidebar">
@@ -37,6 +39,8 @@ https://templatemo.com/tm-536-dream-pulse
                 </div>
               </div>
 
+
+ <!-- Sidebar menu items -->
               <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
                 <li class="nav-item">
                   <a href="#about" class="nav-link active">
@@ -99,7 +103,9 @@ https://templatemo.com/tm-536-dream-pulse
               </footer>
             </div>
           </nav>
-          
+
+
+  <!-- About Intro Box-->
           <main role="main" class="ml-sm-auto col-12">
             <div
               class="parallax-window"
@@ -116,6 +122,8 @@ https://templatemo.com/tm-536-dream-pulse
                 </section>
             </div>            
           </div>
+
+    <!-- My Trips Section-->
 
           <div class="tm-section-wrap bg-white">
             <section id="trips" class="row tm-section">
@@ -153,7 +161,7 @@ https://templatemo.com/tm-536-dream-pulse
             </section>
           </div> --> 
             
-         <div class="tm-section-wrap bg-white">
+  <!--       <div class="tm-section-wrap bg-white">
             <section id="new" class="row tm-section">
               <div class="col-12">
                 <div class="w-100 tm-double-border-1 tm-border-gray">
@@ -164,21 +172,36 @@ https://templatemo.com/tm-536-dream-pulse
                   </div>     
               </div>         
             </section>
-          </div>  
-            
+          </div>  --->
+  
+
+    <!-- New Trip Form -->
           <div class="tm-section-wrap bg-white">
-            <section id="clients" class="row tm-section">
-              <div class="col-12 tm-section-pad">
-                  <div class="tm-flex-item-left">
+            <section id="new" class="row tm-section">
+                    <div class="w-100 tm-double-border-1 tm-border-gray">
+                    <div class="tm-double-border-2 tm-border-gray tm-box-pad">
                       <div class="tm-w-80">
                           <h2 class="tm-color-primary tm-section-title mb-4">New Trip</h2>
-                          <p class="mb-5">
-                            Aenean est augue, iaculis ut arcu a, cursus tempus eros.
-                            Maecenas ut efficitur lectus, vel commodo nibh. Vivamus
-                            consequat massa non euismod facilisis. Morbi assumsan non libero
-                            a vehicula. Donec blandit suscipit magna sit amet elementum.
-                          </p>
+                          <form id = "create-trip" class="mb-5">
+                              <label for="location"> Location:</label>
+                              <input id= 'trip-location' type="text" name="location" value = "" placeholder = "Enter Location of Trip">
+                              <br><br>
+                              <label for="location"> Campground:</label>
+                              <input id = 'trip-campground' type = 'text' name='campground' value = '' placeholder = 'Enter Campground Name'>
+                              <br><br>
+                              <label for="location"> Arrival Date:</label>
+                              <input id = 'trip-arrival' type = 'date' name = 'arrival' value = ''>
+                              <br><br>
+                              <label for="location"> Departure Date:</label>
+                              <input id = 'trip-departure' type = 'date' name = 'departure' value = ''>
+                              <br><br>
+
+                              <input id = 'create-button' type='submit' name = 'submit' value = "Create Trip" class = 'submit'>
+                              </form>
+                           
                       </div>
+                    </div>
+                    </div>
                       
                       <div class="row tm-clients-images">
                         <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
