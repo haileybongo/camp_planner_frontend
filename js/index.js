@@ -26,6 +26,7 @@ function getTrips() {
         let tripContainer = document.getElementById('tripList')
         for (const element of trips.data){
            
+            let newTrip = new Trip(element)
            
             tripContainer.innerHTML += `<li id= "${element.attributes.id}"> <a href="">${element.attributes.location}</a></li>`
         }          
