@@ -21,16 +21,12 @@ function getTrips() {
     fetch("http://localhost:3000/api/trips")
     .then(response => response.json())
     .then (trips => {
-        
-        
-        let tripContainer = document.getElementById('tripList')
         for (const element of trips.data){
            
             let newTrip = new Trip(element)
-           
-            tripContainer.innerHTML += `<li id= "${element.attributes.id}"> <a href="">${element.attributes.location}</a></li>`
-        }          
-    })
+            document.getElementById('tripList').innerHTML += newTrip.renderLinks()
+              
+    }})
     }
 
 function createFormHandler(e) {
@@ -70,8 +66,10 @@ function createFormHandler(e) {
 
 
 function tripLinkHandler(e){
-    debugger
+
     e.preventDefault()
-    let tripID = e.target.parentElement.id
+    let clickedTrip = Trip.findById(e.target.parentElement.id)
+
+    document.getElementById('tripDetails').innerHTML += clickedTrip.renderTripDetails()
 
 }
