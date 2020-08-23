@@ -45,15 +45,15 @@ a {
 }
 
 .tm-bg-white-transparent {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.3);
   border: 1px solid white;
 }
 
 .tm-intro {
-  max-width: 700px;
+  max-width: 500px;
   width: 100%;
   padding: 55px;
-  margin-right: 40%;
+  margin-right: 0;
   margin-left: auto;
 }
 
@@ -74,7 +74,7 @@ a {
   padding: 66px 60px;
 }
 
-#intro {
+#about {
   min-height: 100vh;
   max-width: none;
 }
@@ -474,7 +474,7 @@ figure.effect-bubba:hover p {
 }
 
 .tm-w-80 {
-  max-width: 100%;
+  max-width: 80%;
 }
 
 .tm-flex-item-left {
@@ -652,7 +652,7 @@ figure.effect-bubba:hover p {
   }
 }
 
-@media (max-width: 2000px) {
+@media (max-width: 767px) {
   .tm-section {
     padding: 30px;
   }
