@@ -53,7 +53,7 @@ a {
   max-width: 500px;
   width: 100%;
   padding: 55px;
-  margin-right: 40%;
+  margin-right: 0;
   margin-left: auto;
 }
 
@@ -74,7 +74,7 @@ a {
   padding: 66px 60px;
 }
 
-#intro {
+#about {
   min-height: 100vh;
   max-width: none;
 }
