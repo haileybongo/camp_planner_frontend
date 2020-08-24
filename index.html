@@ -33,28 +33,29 @@ https://templatemo.com/tm-536-dream-pulse
                   </div>
                 </div>
               </div>
-
+              
+   
               <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
                 <li class="nav-item">
-                  <a href="#about" class="nav-link active">
+                  <a href="#about" class="nav-link active" >
                     <span class="d-inline-block mr-3">About</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#trips" class="nav-link">
+                  <a href="#trips" class="nav-link" >
                     <span class="d-inline-block mr-3">My Trips</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#new" class="nav-link">
+                  <a href="#new" class="nav-link" >
                     <span class="d-inline-block mr-3">New Trip</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#pack" class="nav-link">
+                  <a href="#pack" class="nav-link" >
                     <span class="d-inline-block mr-3">Packing Lists</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
@@ -105,7 +106,7 @@ https://templatemo.com/tm-536-dream-pulse
               <div class="tm-section-wrap">
                 <section id="about" class="tm-section">
                     <div class="tm-bg-white-transparent tm-intro">
-                        <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">CAMP PLANNER: MAKING TRIPS EASY</h2>
+                        <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">MAKING TRIPS EASY</h2>
                         <p class="tm-color-gray">
                           Simplify your camping trips. Find campsites, create itineraries, and plan packing lists in one place.
                         </p>
@@ -117,14 +118,7 @@ https://templatemo.com/tm-536-dream-pulse
           <div class="tm-section-wrap bg-white">
             <section id="trips" class="row tm-section">
               <div class="col-xl-6">
-                <div class="tm-section-half">    
-                    <div><i class="fas fa-6x fa-balance-scale mb-5 tm-section-icon"></i></div>                        
-                    <h2 class="tm-section-title tm-color-primary mb-5">My Trips</h2>
-                    <p class="mb-5" id="tripList">
-                      <ul>
-                      </ul>
-                    </p>
-                </div>
+                <div class="tm-section-half" id = "myTrips"></div>
               </div>
               <div class="col-xl-6">
                 <div class="tm-section-half">
@@ -139,58 +133,13 @@ https://templatemo.com/tm-536-dream-pulse
           <div class="tm-section-wrap bg-white">
             <section id="new" class="row tm-section">
               <div class="col-12">
-                <div class="w-100 tm-double-border-1 tm-border-gray">
-                    <div class="tm-double-border-2 tm-border-gray tm-box-pad">
-                      <div class="tm-gallery-wrap">
-                          <h2 class="tm-color-primary tm-section-title mb-4 ml-2">New Trip</h2>
-                          
-                            <form id = "create-trip" class = "mb-5">
-                              <label for="location"> Location:</label><br>
-                              <input id= 'trip-location' type="text" name="location" value = "" placeholder = 'Enter Location of Trip' required>
-                              <br><br>
-                              <label for="location"> Campground:</label><br>
-                              <input id = 'trip-campground' type = 'text' name='campground' value = '' placeholder = 'Enter Campground Name' required>
-                              <br><br>
-                              <label for="location"> Arrival Date:</label><br>
-                              <input id = 'trip-arrival' type = 'date' name = 'arrival' value = '' required>
-                              <br><br>
-                              <label for="location"> Departure Date:</label><br>
-                              <input id = 'trip-departure' type = 'date' name = 'departure' value = '' required>
-                              <br><br>
-
-                              <label for="item"> Packing List:</label><br>
-                              <select id="packingList" name = "item" required>
-                                <option value = "" disabled selected hidden> Choose a List</option>
-                                <option value = "1"> Basic Camping List</option>
-                                <option value = "2"> Backpacking List</option>
-                                <option value = "new">Create New List </option>
-                              </select>
-                              <br><br>
-
-                              <input id = 'create-button' type='submit' name = 'submit' value = "Create Trip" class = 'submit'>
-                              </form>
-                                             
-                    </div>                  
-                  </div>     
-              </div>         
+                <div id = "newForm"></div>         
             </section>
           </div> 
 
           <div class="tm-section-wrap bg-white">
             <section id="pack" class="row tm-section">
-              <div class="col-12">
-                <div class="w-100 tm-double-border-1 tm-border-gray">
-                    <div class="tm-double-border-2 tm-border-gray tm-box-pad">
-                      <div class="tm-gallery-wrap">
-                          <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Packing Lists</h2>
-                          <div id = "listContainer">
-
-
-                          </div>                 
-                    </div>                  
-                  </div>     
-              </div>         
-            </section>
+              <div class="col-12" id = "availableLists"></section>
           </div> 
             
           <div class="tm-section-wrap bg-white">

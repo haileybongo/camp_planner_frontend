@@ -18,7 +18,6 @@ class Trip {
 
      renderTripDetails() {
          return `
-         <div><i class="far fa-6x fa-building mb-5 tm-section-icon"></i></div>
          <div data-id = ${this.id}>
          <h2 class="tm-section-title tm-color-primary mb-5">${this.location}</h2>
          <p class="mb-5">
