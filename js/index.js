@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     getTrips()
+    getItems()
 
     const createTripForm = document.querySelector("#create-trip")
 
@@ -21,17 +22,29 @@ function getTrips() {
     fetch("http://localhost:3000/api/trips")
     .then(response => response.json())
     .then (trips => {
-        for (const element of trips.data){
-           
-            let newTrip = new Trip(element)
+        for (const element of trips.data){     
+            let newTrip = new Trip(element.id, element.attributes)
+            new Item(newTrip.item)
             document.getElementById('tripList').innerHTML += newTrip.renderLinks()
               
     }})
     }
 
+function getItems(){
+    fetch("http://localhost:3000/api/items")
+    .then(response => response.json())
+    .then(items => {
+        for (const element of items.data){
+            let newItem = new Item(element.id, element.attributes)
+            document.getElementById('listContainer').innerHTML += `<h5 class="tm-color-primary">${newItem.name}</h5>`
+            document.getElementById('listContainer').innerHTML += newItem.renderList()
+            document.getElementById('listContainer').innerHTML += `<br><br>`
+        }
+    })
+}
+
 function createFormHandler(e) {
     e.preventDefault()
-    console.log(e)
     let locationInput = document.querySelector("#trip-location").value
     let campgroundInput = document.querySelector("#trip-campground").value
     let arrivalInput = document.querySelector("#trip-arrival").value
@@ -40,8 +53,9 @@ function createFormHandler(e) {
 
     postFetch(locationInput, campgroundInput, arrivalInput, departureInput, packingList)
 
-    
-    function postFetch(location, campground, arrival, departure, item){
+}
+
+function postFetch(location, campground, arrival, departure, item){
 
         fetch("http://localhost:3000/api/trips", {
             method: "POST",
@@ -56,20 +70,29 @@ function createFormHandler(e) {
         })
         .then(response => response.json())
         .then(trip => {
-            console.log(trip)
+            let newTrip = new Trip(trip.data.id, trip.data.attributes)
+            if (Item.findById(newTrip.item.id)){
+                let list = Item.findById(newTrip.item.id)
+            } else{
+
+                new Item(newTrip.item.id, newTrip.item.list)
+            }
+
+            let tripList = Item.findById(newTrip.item.id)
+
+            document.getElementById('tripList').innerHTML += newTrip.renderLinks()
+            document.getElementById('tripDetails').innerHTML += newTrip.renderTripDetails()
+            document.getElementById('listItems').innerHTML = tripList.renderList()
         })
-        }
-        
-
-    
-    }
-
+        }         
 
 function tripLinkHandler(e){
 
     e.preventDefault()
     let clickedTrip = Trip.findById(e.target.parentElement.id)
+    let tripList = Item.findById(clickedTrip.item.id)
 
     document.getElementById('tripDetails').innerHTML += clickedTrip.renderTripDetails()
+    document.getElementById('listItems').innerHTML = tripList.renderList()
 
 }

@@ -1,11 +1,12 @@
 class Trip {
-     constructor(data){
-         this.id = data.id
-         this.location = data.attributes.location,
-         this.campground = data.attributes.campground,
-         this.arrival = data.attributes.arrival,
-         this.departure = data.attributes.departure
-         this.item = data.attributes.item
+     constructor(dataId, dataAttributes){
+
+         this.id = dataId
+         this.location = dataAttributes.location,
+         this.campground = dataAttributes.campground,
+         this.arrival = dataAttributes.arrival,
+         this.departure = dataAttributes.departure
+         this.item = dataAttributes.item
          Trip.all.push(this)
         
      }

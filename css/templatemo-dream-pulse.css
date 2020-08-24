@@ -673,3 +673,25 @@ figure.effect-bubba:hover p {
     padding: 50px 30px;
   }
 }
+
+#trip-location{
+  width: 1000px
+
+}
+
+#trip-campground{
+  width: 1000px
+
+}
+#trip-arrival{
+  width: 1000px
+
+}
+#trip-departure{
+  width: 1000px
+
+}
+#packingList{
+  width: 1000px
+
+}
