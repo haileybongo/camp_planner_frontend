@@ -1,23 +1,37 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    const navBar = document.querySelector("#tmMainNav")
+    const navBar = document.querySelector("#navBar")
 
     navBar.addEventListener("click", (e) =>
     
     navBarHandler(e))
 
 
-   let myTripButton =  document.querySelectorAll("a[href='#trips']")
+   if (localStorage.getItem('jwt-token') === null){
+    document.getElementById("tmMainNav").hidden = true;
+    document.getElementById("loginNav").hidden = false;
+   } else{
+    document.getElementById("tmMainNav").hidden = false;
+    document.getElementById("loginNav").hidden = true;
+   }
 
 })
 
 function getTrips() {
-    fetch("http://localhost:3000/api/trips")
+    fetch("http://localhost:3000/api/trips", {
+        method:"GET",
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem('jwt-token')}`
+        }
+    })
     .then(response => response.json())
     .then (trips => {
-        for (const element of trips.data){    
+        for (const element of trips.data){   
             let newTrip = new Trip(element.id, element.attributes)
+            debugger 
             new Item(newTrip.item.id, newTrip.item)
             document.getElementById('tripList').innerHTML += newTrip.renderLinks()
               
@@ -53,7 +67,8 @@ function postFetch(location, campground, arrival, departure, item){
 
         fetch("http://localhost:3000/api/trips", {
             method: "POST",
-            headers:{"Content-Type": "application/json"},
+            headers:{"Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('jwt-token')}`},     
             body: JSON.stringify({
                 location: location,
                 campground: campground,
@@ -64,6 +79,7 @@ function postFetch(location, campground, arrival, departure, item){
         })
         .then(response => response.json())
         .then(trip => {
+            debugger
             let newTrip = new Trip(trip.data.id, trip.data.attributes)
             if (Item.findById(newTrip.item.id)){
                 let list = Item.findById(newTrip.item.id)
@@ -173,8 +189,144 @@ function navBarHandler(e){
         </div>  `
         getItems()
     }}
-    
+    else if (button === "SIGN UP"){
+        let html = document.querySelector("#signupForm").innerHTML
+        if (html === ""){
+        document.querySelector("#signupForm").innerHTML +=
+        `<div class="tm-contact-form-wrap"> 
+        <form class="tm-contact-form">
+        <div class="form-group">
+        <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Sign Up</h2>
+        <br>
+        </div>
+            <div class="form-group">
+              <input type="text" id="username" name="username" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Username" required />
+            </div>
+            <div class="form-group">
+            <input type="text" id="password" name="password" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Password" required />
+            </div>
+            <div class="form-group">
+            <input type="text" id="passwordConfirmation" name="password_confirmation" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Confirm Password" required />
+            </div>
+            <div class="form-group mb-0">
+              <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+                SIGNUP
+              </button>
+            </div>
+          </form>
+      </div>  `
+      const signupForm = document.querySelector("#signupForm")
 
+      signupForm.addEventListener("submit", (e) => 
+      signupFormHandler(e))
+    }}
+    else if (button === "LOG IN"){
+        let html = document.querySelector("#loginForm").innerHTML
+        if (html === ""){
+        document.querySelector("#loginForm").innerHTML +=
+        `<div class="tm-contact-form-wrap"> 
+        <form class="tm-contact-form">
+        <div class="form-group">
+        <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Log In</h2>
+        <br>
+        </div>
+            <div class="form-group">
+              <input type="text" id="username" name="username" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Username" required />
+            </div>
+            <div class="form-group">
+            <input type="text" id="password" name="password" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Password" required />
+            </div>
+            <div class="form-group mb-0">
+              <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+                LOG IN
+              </button>
+            </div>
+          </form>
+      </div>  `
+
+      const loginForm = document.querySelector("#loginForm")
+
+      loginForm.addEventListener("submit", (e) => 
+      loginFormHandler(e))
+    }}
 
 
 }
+
+function campSearch (state, query){ 
+    fetch("http://developer.nps.gov/api/v1/campgrounds?stateCode="+state+"q="+query+"&api_key=qblPW1KHLut8x7u6TbqmyIztfGiG59XKDjiYKmBn", {
+        method: "GET",
+        headers:{"Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://developer.nps.gov/api/v1"}
+    })
+    .then(response => response.json())
+    .then(results =>{
+        debugger
+    } )
+}
+
+function signupFormHandler(e){
+    e.preventDefault()
+    
+    let username = document.querySelector("#username").value
+    let password = document.querySelector("#password").value
+    let password_confirmation = document.querySelector("#passwordConfirmation").value
+
+    signupUser(username, password, password_confirmation)
+}
+
+function loginFormHandler(e){
+    e.preventDefault()
+    
+    let username = document.querySelector("#username").value
+    let password = document.querySelector("#password").value
+
+    loginUser(username, password)
+}
+
+function signupUser (username, password, password_confirmation){
+    fetch('http://localhost:3000/api/users', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
+  },
+  body: JSON.stringify({
+    user: {
+      username: username,
+      password: password,
+      password_confirmation: password_confirmation   
+    }
+  })
+})
+  .then(response => response.json())
+  .then(user => {
+      console.log(user)
+      localStorage.setItem('jwt-token', user.jwt)
+  })
+}
+
+function loginUser (username, password){
+    fetch('http://localhost:3000/api/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
+  },
+  body: JSON.stringify({
+    user: {
+      username: username,
+      password: password,  
+    }
+  })
+})
+  .then(response => response.json())
+  .then(user => {
+      console.log(user)
+      localStorage.setItem('jwt-token', user.jwt)
+  })
+}
+
+
+
+
