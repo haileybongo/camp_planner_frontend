@@ -25,8 +25,11 @@ class Item {
     }
 
     static findById(id) {
+      
         return this.all.find(item => item.id === id)
+        //for (const item of this.all){ debugger; if (item.id === id){return item}}
     }
+
 
 }
 

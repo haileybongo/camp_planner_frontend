@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     navBarHandler(e))
 
+    getItems()
+
 
    if (localStorage.getItem('jwt-token') === null){
     document.getElementById("tmMainNav").hidden = true;
@@ -31,8 +33,6 @@ function getTrips() {
     .then (trips => {
         for (const element of trips.data){   
             let newTrip = new Trip(element.id, element.attributes)
-            debugger 
-            new Item(newTrip.item.id, newTrip.item)
             document.getElementById('tripList').innerHTML += newTrip.renderLinks()
               
     }})
@@ -43,10 +43,7 @@ function getItems(){
     .then(response => response.json())
     .then(items => {
         for (const element of items.data){
-            let newItem = new Item(element.id, element.attributes)
-            document.getElementById('listContainer').innerHTML += `<h5 class="tm-color-primary">${newItem.name}</h5>`
-            document.getElementById('listContainer').innerHTML += newItem.renderList()
-            document.getElementById('listContainer').innerHTML += `<br><br>`
+            new Item(element.id, element.attributes)
         }
     })
 }
@@ -79,18 +76,14 @@ function postFetch(location, campground, arrival, departure, item){
         })
         .then(response => response.json())
         .then(trip => {
-            debugger
+           
             let newTrip = new Trip(trip.data.id, trip.data.attributes)
-            if (Item.findById(newTrip.item.id)){
-                let list = Item.findById(newTrip.item.id)
-            } else{
-
-                new Item(newTrip.item.id, newTrip.item.list)
-            }
 
             let tripList = Item.findById(newTrip.item.id)
+    
 
             document.getElementById('tripList').innerHTML += newTrip.renderLinks()
+            document.getElementById('tripDetails').innerHTML += ""
             document.getElementById('tripDetails').innerHTML += newTrip.renderTripDetails()
             document.getElementById('listItems').innerHTML = tripList.renderList()
         })
@@ -100,7 +93,11 @@ function tripLinkHandler(e){
 
     e.preventDefault()
     let clickedTrip = Trip.findById(e.target.parentElement.id)
-    let tripList = Item.findById(clickedTrip.item.id)
+    debugger
+
+  
+    let tripList = Item.findById(clickedTrip.item.id.toString(10))
+
 
     document.getElementById('tripDetails').innerHTML = ""
     document.getElementById('tripDetails').innerHTML += clickedTrip.renderTripDetails()
@@ -113,143 +110,44 @@ function navBarHandler(e){
 
 
     if (button === "MY TRIPS"){
-        let html = document.querySelector("#myTrips").innerHTML
-        if (html === ""){ 
-            document.querySelector("#myTrips").innerHTML += 
-        `                       
-        <h2 class="tm-section-title tm-color-primary mb-5">My Trips</h2>
-        <p class="mb-5" id="tripList">
-          <ul>
-          </ul>
-        </p>`
+        document.querySelector("#myTrips").hidden = false;
         getTrips()
         const tripList = document.querySelector("#tripList")
         tripList.addEventListener("click", (e) =>
         tripLinkHandler(e))
-    }}
+    }
     else if (button === "NEW TRIP"){
-        let html = document.querySelector("#newForm").innerHTML
-        if (html === ""){
-
-        document.querySelector("#newForm").innerHTML +=
-        `                <div class="w-100 tm-double-border-1 tm-border-gray">
-        <div class="tm-double-border-2 tm-border-gray tm-box-pad">
-          <div class="tm-gallery-wrap">
-        <h2 class="tm-color-primary tm-section-title mb-4 ml-2">New Trip</h2>
-                          
-        <form id = "create-trip" class = "mb-5">
-          <label for="location"> Location:</label><br>
-          <input id= 'trip-location' type="text" name="location" value = "" placeholder = 'Enter Location of Trip' required>
-          <br><br>
-          <label for="location"> Campground:</label><br>
-          <input id = 'trip-campground' type = 'text' name='campground' value = '' placeholder = 'Enter Campground Name' required>
-          <br><br>
-          <label for="location"> Arrival Date:</label><br>
-          <input id = 'trip-arrival' type = 'date' name = 'arrival' value = '' required>
-          <br><br>
-          <label for="location"> Departure Date:</label><br>
-          <input id = 'trip-departure' type = 'date' name = 'departure' value = '' required>
-          <br><br>
-
-          <label for="item"> Packing List:</label><br>
-          <select id="packingList" name = "item" required>
-            <option value = "" disabled selected hidden> Choose a List</option>
-            <option value = "1"> Basic Camping List</option>
-            <option value = "2"> Backpacking List</option>
-            <option value = "new">Create New List </option>
-          </select>
-          <br><br>
-
-          <input id = 'create-button' type='submit' name = 'submit' value = "Create Trip" class = 'submit'>
-          </form>
-          </div>
-          </div>
-          </div>
-        `
+        document.querySelector("#newForm").hidden = false
         const createTripForm = document.querySelector("#create-trip")
-
         createTripForm.addEventListener("submit", (e) => 
         createFormHandler(e))
 
-    }}
+    }
     else if (button === "PACKING LISTS"){
-        let html = document.querySelector("#availableLists").innerHTML
-        if (html === ""){
-        document.querySelector("#availableLists").innerHTML +=
-        `  <div class="w-100 tm-double-border-1 tm-border-gray">
-            <div class="tm-double-border-2 tm-border-gray tm-box-pad">
-            <div class="tm-gallery-wrap">
-              <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Packing Lists</h2>
-              <div id = "listContainer">
-
-
-              </div>                 
-            </div>                  
-            </div>     
-        </div>  `
-        getItems()
-    }}
+        document.querySelector("#availableLists").hidden = false   
+        for (const element of Item.all){
+          document.getElementById('listContainer').innerHTML += `<h5 class="tm-color-primary">${element.name}</h5>`
+          document.getElementById('listContainer').innerHTML += element.renderList()
+          document.getElementById('listContainer').innerHTML += `<br><br>`
+      }  
+       
+    }
     else if (button === "SIGN UP"){
-        let html = document.querySelector("#signupForm").innerHTML
-        if (html === ""){
-        document.querySelector("#signupForm").innerHTML +=
-        `<div class="tm-contact-form-wrap"> 
-        <form class="tm-contact-form">
-        <div class="form-group">
-        <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Sign Up</h2>
-        <br>
-        </div>
-            <div class="form-group">
-              <input type="text" id="username" name="username" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Username" required />
-            </div>
-            <div class="form-group">
-            <input type="text" id="password" name="password" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Password" required />
-            </div>
-            <div class="form-group">
-            <input type="text" id="passwordConfirmation" name="password_confirmation" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Confirm Password" required />
-            </div>
-            <div class="form-group mb-0">
-              <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
-                SIGNUP
-              </button>
-            </div>
-          </form>
-      </div>  `
+      document.querySelector("#signupForm").hidden = false
       const signupForm = document.querySelector("#signupForm")
-
       signupForm.addEventListener("submit", (e) => 
       signupFormHandler(e))
-    }}
+    }
     else if (button === "LOG IN"){
-        let html = document.querySelector("#loginForm").innerHTML
-        if (html === ""){
-        document.querySelector("#loginForm").innerHTML +=
-        `<div class="tm-contact-form-wrap"> 
-        <form class="tm-contact-form">
-        <div class="form-group">
-        <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Log In</h2>
-        <br>
-        </div>
-            <div class="form-group">
-              <input type="text" id="username" name="username" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Username" required />
-            </div>
-            <div class="form-group">
-            <input type="text" id="password" name="password" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Password" required />
-            </div>
-            <div class="form-group mb-0">
-              <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
-                LOG IN
-              </button>
-            </div>
-          </form>
-      </div>  `
-
+      document.querySelector("#loginForm").hidden = false
       const loginForm = document.querySelector("#loginForm")
-
       loginForm.addEventListener("submit", (e) => 
       loginFormHandler(e))
-    }}
-
+    }
+    else if (button === "LOG OUT"){
+      localStorage.removeItem('jwt-token')
+      location.reload();
+    }
 
 }
 
@@ -278,9 +176,8 @@ function signupFormHandler(e){
 function loginFormHandler(e){
     e.preventDefault()
     
-    let username = document.querySelector("#username").value
-    let password = document.querySelector("#password").value
-
+    let username = document.querySelector("#logUsername").value
+    let password = document.querySelector("#logPassword").value
     loginUser(username, password)
 }
 
@@ -303,6 +200,7 @@ function signupUser (username, password, password_confirmation){
   .then(user => {
       console.log(user)
       localStorage.setItem('jwt-token', user.jwt)
+      location.reload();
   })
 }
 
@@ -324,6 +222,7 @@ function loginUser (username, password){
   .then(user => {
       console.log(user)
       localStorage.setItem('jwt-token', user.jwt)
+      location.reload();
   })
 }
 

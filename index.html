@@ -66,6 +66,12 @@ https://templatemo.com/tm-536-dream-pulse
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="#logout" class="nav-link">
+                    <span class="d-inline-block mr-3">Log Out</span>
+                    <span class="d-inline-block tm-white-rect"></span>
+                  </a>
+                </li>
               </ul>
                 <ul id="loginNav" class="nav flex-column text-uppercase text-right tm-main-nav">
                 <li class="nav-item">
@@ -136,7 +142,12 @@ https://templatemo.com/tm-536-dream-pulse
           <div class="tm-section-wrap bg-white">
             <section id="trips" class="row tm-section">
               <div class="col-xl-6">
-                <div class="tm-section-half" id = "myTrips"></div>
+                <div class="tm-section-half" id = "myTrips" hidden> 
+                  <h2 class="tm-section-title tm-color-primary mb-5">My Trips</h2>
+                  <p class="mb-5" id="tripList">
+                    <ul>
+                    </ul>
+                  </p></div>
               </div>
               <div class="col-xl-6">
                 <div class="tm-section-half">
@@ -151,23 +162,112 @@ https://templatemo.com/tm-536-dream-pulse
           <div class="tm-section-wrap bg-white">
             <section id="new" class="row tm-section">
               <div class="col-12">
-                <div id = "newForm"></div>         
+                <div id = "newForm" hidden>              
+                  <div class="w-100 tm-double-border-1 tm-border-gray">
+                  <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                    <div class="tm-gallery-wrap">
+                  <h2 class="tm-color-primary tm-section-title mb-4 ml-2">New Trip</h2>
+                                    
+                  <form id = "create-trip" class = "mb-5">
+                    <label for="location"> Location:</label><br>
+                    <input id= 'trip-location' type="text" name="location" value = "" placeholder = 'Enter Location of Trip' required>
+                    <br><br>
+                    <label for="location"> Campground:</label><br>
+                    <input id = 'trip-campground' type = 'text' name='campground' value = '' placeholder = 'Enter Campground Name' required>
+                    <br><br>
+                    <label for="location"> Arrival Date:</label><br>
+                    <input id = 'trip-arrival' type = 'date' name = 'arrival' value = '' required>
+                    <br><br>
+                    <label for="location"> Departure Date:</label><br>
+                    <input id = 'trip-departure' type = 'date' name = 'departure' value = '' required>
+                    <br><br>
+          
+                    <label for="item"> Packing List:</label><br>
+                    <select id="packingList" name = "item" required>
+                      <option value = "" disabled selected hidden> Choose a List</option>
+                      <option value = "1"> Basic Camping List</option>
+                      <option value = "2"> Backpacking List</option>
+                      <option value = "new">Create New List </option>
+                    </select>
+                    <br><br>
+          
+                    <input id = 'create-button' type='submit' name = 'submit' value = "Create Trip" class = 'submit'>
+                    </form>
+                    </div>
+                    </div>
+                    </div></div>         
             </section>
           </div> 
 
           <div class="tm-section-wrap bg-white">
             <section id="pack" class="row tm-section">
-              <div class="col-12" id = "availableLists"></section>
+              <div class="col-12" id = "availableLists" hidden>
+                <div class="w-100 tm-double-border-1 tm-border-gray">
+                <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                <div class="tm-gallery-wrap">
+                  <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Packing Lists</h2>
+                  <div id = "listContainer">
+                  </div>                 
+                </div>                  
+                </div>     
+            </div>  </section>
           </div> 
 
           <div class="tm-section-wrap bg-white">
             <section id="signup" class="row tm-section">
-              <div class="col-12" id = "signupForm"></section>
+              <div class="col-12" id = "signupForm" hidden>
+                <div class="tm-contact-form-wrap"> 
+                  <form class="tm-contact-form">
+                  <div class="form-group">
+                  <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Sign Up</h2>
+                  <br>
+                  </div>
+                      <div class="form-group">
+                        <input type="text" id="signUsername" name="username" value = "" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Username" required />
+                      </div>
+                      <div class="form-group">
+                      <input type="text" id="signPassword" name="password" value = "" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Password" required />
+                      </div>
+                      <div class="form-group">
+                      <input type="text" id="passwordConfirmation" value = "" name="password_confirmation" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Confirm Password" required />
+                      </div>
+                      <div class="form-group mb-0">
+                        
+                        <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+                          SIGNUP
+                        </button>
+                      </div>
+                    </form>
+                </div>  
+              </section>
           </div> 
 
           <div class="tm-section-wrap bg-white">
             <section id="login" class="row tm-section">
-              <div class="col-12" id = "loginForm"></section>
+              <div class="col-12" id = "loginForm" hidden>
+                <div class="tm-contact-form-wrap"> 
+                  <form class="tm-contact-form">
+                    <div class="form-group">
+                    <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Log In</h2>
+                    <br>
+                    </div>
+                        <div class="form-group">
+                          <input type="text" id="logUsername" name="username" value = "" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Username" required />
+                        </div>
+                        <div class="form-group">
+                        <input type="text" id="logPassword" name="password" value = "" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Password" required />
+                        </div>
+                          
+                          <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+                            LOG IN
+                          </button>
+                        </div>
+                      </form>
+
+                </div>  
+                </div>
+                </section>
+              </section>
           </div> 
 
 
