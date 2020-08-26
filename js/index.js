@@ -93,7 +93,6 @@ function tripLinkHandler(e){
 
     e.preventDefault()
     let clickedTrip = Trip.findById(e.target.parentElement.id)
-    debugger
 
   
     let tripList = Item.findById(clickedTrip.item.id.toString(10))
@@ -146,28 +145,41 @@ function navBarHandler(e){
     }
     else if (button === "LOG OUT"){
       localStorage.removeItem('jwt-token')
+      document.documentElement.scrollTop = 0;
       location.reload();
+    }
+    else if (button === "FIND A CAMPSITE"){
+      let searchForm = document.querySelector("#searchForm")
+      searchForm.hidden = false
+      searchForm.addEventListener("submit", (e) => 
+      campFormHandler(e))
     }
 
 }
 
+function campFormHandler(e){
+  e.preventDefault()
+
+  let stateCode = document.querySelector("#state").value
+  let query = document.querySelector("#query").value
+  debugger
+
+  campSearch (stateCode, query)
+}
+
 function campSearch (state, query){ 
-    fetch("http://developer.nps.gov/api/v1/campgrounds?stateCode="+state+"q="+query+"&api_key=qblPW1KHLut8x7u6TbqmyIztfGiG59XKDjiYKmBn", {
-        method: "GET",
-        headers:{"Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://developer.nps.gov/api/v1"}
-    })
-    .then(response => response.json())
-    .then(results =>{
-        debugger
-    } )
+  fetch("http://developer.nps.gov/api/v1/campgrounds?stateCode="+state+"&q="+query+"&api_key=qblPW1KHLut8x7u6TbqmyIztfGiG59XKDjiYKmBn")
+  .then(response => response.json())
+  .then(results =>{
+      debugger
+  } )
 }
 
 function signupFormHandler(e){
     e.preventDefault()
     
-    let username = document.querySelector("#username").value
-    let password = document.querySelector("#password").value
+    let username = document.querySelector("#signUsername").value
+    let password = document.querySelector("#signPassword").value
     let password_confirmation = document.querySelector("#passwordConfirmation").value
 
     signupUser(username, password, password_confirmation)
@@ -200,6 +212,7 @@ function signupUser (username, password, password_confirmation){
   .then(user => {
       console.log(user)
       localStorage.setItem('jwt-token', user.jwt)
+      document.documentElement.scrollTop = 0;
       location.reload();
   })
 }
@@ -222,6 +235,7 @@ function loginUser (username, password){
   .then(user => {
       console.log(user)
       localStorage.setItem('jwt-token', user.jwt)
+      document.documentElement.scrollTop = 0;
       location.reload();
   })
 }
