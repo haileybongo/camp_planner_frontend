@@ -162,8 +162,7 @@ function campFormHandler(e){
 
   let stateCode = document.querySelector("#state").value
   let query = document.querySelector("#query").value
-  debugger
-
+debugger
   campSearch (stateCode, query)
 }
 
@@ -171,7 +170,24 @@ function campSearch (state, query){
   fetch("http://developer.nps.gov/api/v1/campgrounds?stateCode="+state+"&q="+query+"&api_key=qblPW1KHLut8x7u6TbqmyIztfGiG59XKDjiYKmBn")
   .then(response => response.json())
   .then(results =>{
+     
+      let resultContainer = document.getElementById('resultContainer').innerHTML
       debugger
+      for(const element of results.data){
+        resultContainer +=
+        `<p>
+        <h4>${element.name}</h4>
+        ${element.addresses[0].city}
+        <br>
+        ${element.description}
+        <br>
+        ${element.url}
+        <br>
+        <img src= ${element.images[0].url}>
+        <br>
+
+        </p>`
+      }
   } )
 }
 
