@@ -65,7 +65,7 @@ function loginUser (username, password){
 })
   .then(response => response.json())
   .then(user => {
-      debugger
+
     if (user.message){
         document.getElementById("logInHeader").innerHTML += 
         ` <p style="color:red;"> ${user.message} </p>`    

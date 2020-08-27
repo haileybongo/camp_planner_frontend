@@ -14,21 +14,45 @@ function campFormHandler(e){
        
         let resultContainer = document.getElementById('resultContainer')
         document.getElementById("searchResults").hidden = false
+
+        resultContainer.innerHTML = ""
   
         for(const element of results.data){
+
+          
+
+          if (element.url != ""){
+              debugger
   
           resultContainer.innerHTML +=
           `<p>
-          <h4><a href = ${element.url}> ${element.name}</a></h4>
+          <h4><a href = ${element.url}> ${element.name}</a></h4>`
+
+          } else if (element.reservationUrl != "") {
+            resultContainer.innerHTML +=
+            `<p>
+            <h4><a href = ${element.reservationUrl}> ${element.name}</a></h4>`
+          } else {
+            resultContainer.innerHTML +=
+            `<p>
+            <h4> ${element.name} </h4>`
+          }
+
+          if (element.addresses != "" && element.addresses.city != "") {
+              resultContainer.innerHTML +=
+          `
           ${element.addresses[0].city}
-          <br><br>
-          <h5> Description</h5>
+          <br><br>`}
+
+          if (element.hasOwnProperty("description")){ 
+        resultContainer.innerHTML +=         
+          `<h5> Description</h5>
           ${element.description}
-          <br><br>
-  
-  
-          </p>`
-        }
-    } )
+          <br><br>`
+          }
+
+          resultContainer.innerHTML += `</p>`
+        
+    } })
   }
   

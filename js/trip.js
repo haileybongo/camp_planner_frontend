@@ -66,7 +66,7 @@ function newTripPostFetch(location, campground, arrival, departure, item){
                 campground: campground,
                 arrival: arrival,
                 departure: departure,
-                item: item
+                item_id: item
             })
         })
         .then(response => response.json())
@@ -76,9 +76,11 @@ function newTripPostFetch(location, campground, arrival, departure, item){
 
             let tripList = Item.findById(newTrip.item.id.toString(10))
 
+
+            document.getElementById('tripList').innerHTML = ""
             document.getElementById('tripDetails').innerHTML = ""
             for (const element of Trip.all){   
-                document.getElementById('tripList').innerHTML += newTrip.renderLinks()
+                document.getElementById('tripList').innerHTML += element.renderLinks()
                   
         }
             document.getElementById('tripDetails').innerHTML += newTrip.renderTripDetails()
@@ -95,8 +97,8 @@ function tripLinkHandler(e){
     e.preventDefault()
     let clickedTrip = Trip.findById(e.target.parentElement.id)
 
-    debugger
     let tripList = Item.findById(clickedTrip.item.id.toString(10))
+    debugger
 
 
     document.getElementById('tripDetails').innerHTML = ""
@@ -114,8 +116,12 @@ function getTrips() {
     })
     .then(response => response.json())
     .then (trips => {
-        for (const element of trips.data){   
+
+        document.getElementById('tripList').innerHTML = ""
+        for (const element of trips.data){  
+            debugger
             let newTrip = new Trip(element.id, element.attributes)
+
             document.getElementById('tripList').innerHTML += newTrip.renderLinks()
               
     }})
