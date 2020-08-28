@@ -675,23 +675,26 @@ figure.effect-bubba:hover p {
 }
 
 #trip-location{
-  width: 1000px
+  width: 100%
 
 }
 
 #trip-campground{
-  width: 1000px
+  width: 100%
 
 }
 #trip-arrival{
-  width: 1000px
+  width: 100%
 
 }
 #trip-departure{
-  width: 1000px
+  width: 100%
 
 }
 #packingList{
-  width: 1000px
+  width: 100%
+}
 
+#myTrips{
+  position: 0
 }

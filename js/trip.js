@@ -21,13 +21,13 @@ class Trip {
          <div data-id = ${this.id}>
          <h2 class="tm-section-title tm-color-primary mb-5">${this.location}</h2>
          <p class="mb-5">
-           Campground: ${this.campground}
+           <strong>Campground: </strong> ${this.campground}
            <br>
-           Arriving on ${this.arrival}
+           <strong>Arriving on </strong>${this.arrival}
            <br>
-           Departing on ${this.departure}
+           <strong>Departing on </strong>${this.departure}
            <br>
-           Packing list: ${this.item.name}
+           <strong> Packing list: </strong> ${this.item.name}
            <ul id="listItems">
             </ul>
          </p>
@@ -72,6 +72,8 @@ function newTripPostFetch(location, campground, arrival, departure, item){
         .then(response => response.json())
         .then(trip => {
 
+            document.querySelector("#create-trip").reset();
+
             let newTrip = new Trip(trip.data.id, trip.data.attributes)
 
             let tripList = Item.findById(newTrip.item.id.toString(10))
@@ -85,6 +87,8 @@ function newTripPostFetch(location, campground, arrival, departure, item){
         }
             document.getElementById('tripDetails').innerHTML += newTrip.renderTripDetails()
             document.getElementById('listItems').innerHTML = tripList.renderList()
+
+            document.getElementById('tripDetails').scrollIntoView()
         })
         .catch(errors => {
             console.log(errors)
@@ -98,8 +102,6 @@ function tripLinkHandler(e){
     let clickedTrip = Trip.findById(e.target.parentElement.id)
 
     let tripList = Item.findById(clickedTrip.item.id.toString(10))
-    debugger
-
 
     document.getElementById('tripDetails').innerHTML = ""
     document.getElementById('tripDetails').innerHTML += clickedTrip.renderTripDetails()
@@ -118,11 +120,17 @@ function getTrips() {
     .then (trips => {
 
         document.getElementById('tripList').innerHTML = ""
-        for (const element of trips.data){  
-            debugger
+        for (const element of trips.data){ 
+            let findTrip = Trip.findById(element.id.toString(10)) 
+            if (findTrip != null ){
+                
+                document.getElementById('tripList').innerHTML += findTrip.renderLinks()
+            }else {
+               
             let newTrip = new Trip(element.id, element.attributes)
 
             document.getElementById('tripList').innerHTML += newTrip.renderLinks()
+            }
               
     }})
     }

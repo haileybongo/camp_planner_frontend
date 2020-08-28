@@ -15,24 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
    if (localStorage.getItem('jwt-token') === null){
     document.getElementById("tmMainNav").hidden = true;
     document.getElementById("loginNav").hidden = false;
+    document.getElementById("preLoginAbout").hidden = false;
+    document.getElementById("postLoginAbout").hidden = true;
    } else{
     document.getElementById("tmMainNav").hidden = false;
     document.getElementById("loginNav").hidden = true;
+    document.getElementById("preLoginAbout").hidden = true
+    document.getElementById("postLoginAbout").hidden = false;
    }
 
 })
 
 
 
-function getItems(){
-    fetch("http://localhost:3000/api/items")
-    .then(response => response.json())
-    .then(items => {
-        for (const element of items.data){
-            new Item(element.id, element.attributes)
-        }
-    })
-}
 
 function navBarHandler(e){
     button = e.target.innerText

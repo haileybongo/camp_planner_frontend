@@ -27,10 +27,21 @@ class Item {
     static findById(id) {
       
         return this.all.find(item => item.id === id)
-        //for (const item of this.all){ debugger; if (item.id === id){return item}}
     }
 
 
 }
 
 Item.all = []
+
+
+function getItems(){
+    fetch("http://localhost:3000/api/items")
+    .then(response => response.json())
+    .then(items => {
+        for (const element of items.data){
+            
+            new Item(element.id, element.attributes)
+        }
+    })
+}

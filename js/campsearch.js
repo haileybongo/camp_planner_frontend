@@ -22,7 +22,7 @@ function campFormHandler(e){
           
 
           if (element.url != ""){
-              debugger
+              
   
           resultContainer.innerHTML +=
           `<p>
