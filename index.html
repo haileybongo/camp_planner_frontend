@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <title>Dream Pulse TemplateMo</title>
+    <title>Camp Planner</title>
 <!--
 DREAM PULSE
 https://templatemo.com/tm-536-dream-pulse
@@ -19,7 +17,6 @@ https://templatemo.com/tm-536-dream-pulse
     <link rel="stylesheet" href="slick/slick-theme.css"/>    
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/templatemo-dream-pulse.css" />
-    <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
     <main class="container-fluid">
@@ -36,35 +33,56 @@ https://templatemo.com/tm-536-dream-pulse
                   </div>
                 </div>
               </div>
-
+              
+            <div id = navBar>
               <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
                 <li class="nav-item">
-                  <a href="#about" class="nav-link active">
+                  <a href="#about" class="nav-link active" >
                     <span class="d-inline-block mr-3">About</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#trips" class="nav-link">
+                  <a href="#trips" class="nav-link" >
                     <span class="d-inline-block mr-3">My Trips</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#work" class="nav-link">
-                    <span class="d-inline-block mr-3">Work</span>
+                  <a href="#new" class="nav-link" >
+                    <span class="d-inline-block mr-3">New Trip</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#clients" class="nav-link">
-                    <span class="d-inline-block mr-3">Clients</span>
+                  <a href="#pack" class="nav-link" >
+                    <span class="d-inline-block mr-3">Packing Lists</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#talk" class="nav-link">
-                    <span class="d-inline-block mr-3">Let's Talk</span>
+                  <a href="#find" class="nav-link">
+                    <span class="d-inline-block mr-3">Find a Campsite</span>
+                    <span class="d-inline-block tm-white-rect"></span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#logout" class="nav-link">
+                    <span class="d-inline-block mr-3">Log Out</span>
+                    <span class="d-inline-block tm-white-rect"></span>
+                  </a>
+                </li>
+              </ul>
+                <ul id="loginNav" class="nav flex-column text-uppercase text-right tm-main-nav">
+                <li class="nav-item">
+                  <a href="#signup" class="nav-link">
+                    <span class="d-inline-block mr-3">Sign Up</span>
+                    <span class="d-inline-block tm-white-rect"></span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#login" class="nav-link">
+                    <span class="d-inline-block mr-3">Log In</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
@@ -92,12 +110,13 @@ https://templatemo.com/tm-536-dream-pulse
                 </li>
               </ul>
               <footer class="text-center text-white small">
-                <p class="mb--0 mb-2">Copyright 2020 Dream Pulse</p>
+                <p class="mb--0 mb-2">Copyright 2020 Camp Planner</p>
                 <p class="mb-0">Design:
                   <a rel="nofollow" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
                 </p>
               </footer>
             </div>
+          </div>
           </nav>
           
           <main role="main" class="ml-sm-auto col-12">
@@ -107,12 +126,21 @@ https://templatemo.com/tm-536-dream-pulse
               data-image-src="img/dominik-jirovsky-re2LZOB2XvY-unsplash.jpg">
               <div class="tm-section-wrap">
                 <section id="about" class="tm-section">
-                    <div class="tm-bg-white-transparent tm-intro">
-                        <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">Camp Planner: Making Trips Easy</h2>
+                    <div class="tm-bg-white-transparent tm-intro" id = "preLoginAbout" hidden>
+                        <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">MAKING TRIPS EASY</h2>
                         <p class="tm-color-gray">
-                         Camp planner is a tool to simplify your camping trips. Find campsites, create itineraries, and plan packing lists in one place. 
+                          Simplify your camping trips. Find campsites, create itineraries, and plan packing lists in one place.
                         </p>
-                    </div>              
+                        <p class="tm-color-gray">
+                          Start by signing up or logging in. 
+                        </p>
+                    </div> 
+                    <div class="tm-bg-white-transparent tm-intro" id = "postLoginAbout" hidden>
+                      <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary">WELCOME!</h2>
+                      <p class="tm-color-gray">
+                        Get ready to plan your next adventure.
+                      </p>
+                  </div>               
                 </section>
             </div>            
           </div>
@@ -120,241 +148,678 @@ https://templatemo.com/tm-536-dream-pulse
           <div class="tm-section-wrap bg-white">
             <section id="trips" class="row tm-section">
               <div class="col-xl-6">
-                <div class="tm-section-half">    
-                    
-                    <h2 class="tm-section-title tm-color-primary mb-5">My Trips</h2>
-                    <p class="mb-5" id="tripList">
+                <div class="tm-section-half" id = "myTrips" hidden> 
+                  <h2 class="tm-section-title tm-color-primary mb-5">My Trips</h2>
+                  <p class="mb-5" id="tripList">
                     <ul>
                     </ul>
-                    </p>
+                  </p></div>
+              </div>
+              <div class="col-xl-6">
+                <div class="tm-section-half">
+                  <div id = "tripDetails">
+
+                  </div>
                 </div>
               </div>
- <!--          <div class="col-xl-6">
-                <div class="tm-section-half">
-                    <div><i class="far fa-6x fa-building mb-5 tm-section-icon"></i></div>
-                    <h2 class="tm-section-title tm-color-primary mb-5">Company Profile</h2>
-                    <p class="mb-5">
-                        You can use this template for your commercial websites or for your clients.
-                        You are NOT allowed to re-post this template as a downloadable ZIP file
-                        on your template collection sites. It is illegal.
-                    </p>
-                    <p>
-                        Suspendisse fermentum orci eget lorem euismod suscipit. Morbi
-                        condimentum odio metus, at finibus dolor sollicitudin quis.
-                        Curabitur eu congue erat.
-                    </p>
-                </div>
-            </div>
             </section>
-          </div> --> 
+          </div> 
             
           <div class="tm-section-wrap bg-white">
-            <section id="work" class="row tm-section">
+            <section id="new" class="row tm-section">
               <div class="col-12">
+                <div id = "newForm" hidden>              
+                  <div class="w-100 tm-double-border-1 tm-border-gray">
+                  <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                    <div class="tm-gallery-wrap">
+                  <h2 class="tm-color-primary tm-section-title mb-4 ml-2">New Trip</h2>
+                                    
+                  <form id = "create-trip" class = "mb-5">
+                    <label for="location"> Location:</label><br>
+                    <input id= 'trip-location' type="text" name="location" value = "" placeholder = 'Enter Location of Trip' required>
+                    <br><br>
+                    <label for="location"> Campground:</label><br>
+                    <input id = 'trip-campground' type = 'text' name='campground' value = '' placeholder = 'Enter Campground Name' required>
+                    <br><br>
+                    <label for="location"> Arrival Date:</label><br>
+                    <input id = 'trip-arrival' type = 'date' name = 'arrival' value = '' required>
+                    <br><br>
+                    <label for="location"> Departure Date:</label><br>
+                    <input id = 'trip-departure' type = 'date' name = 'departure' value = '' required>
+                    <br><br>
+          
+                    <label for="item"> Packing List:</label><br>
+                    <select id="packingList" name = "item" required>
+                      <option value = "" disabled selected hidden> Choose a List</option>
+                      <option value = "1"> Basic Camping List</option>
+                      <option value = "2"> Backpacking List</option>
+                    </select>
+                    <br><br>
+          
+                    <input id = 'create-button' type='submit' name = 'submit' value = "Create Trip" class = 'submit'>
+                    </form>
+                    </div>
+                    </div>
+                    </div></div>         
+            </section>
+          </div> 
+
+          <div class="tm-section-wrap bg-white">
+            <section id="pack" class="row tm-section">
+              <div class="col-12" id = "availableLists" hidden>
                 <div class="w-100 tm-double-border-1 tm-border-gray">
-                    <div class="tm-double-border-2 tm-border-gray tm-box-pad">
-                      <div class="tm-gallery-wrap">
-                          <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Our Work</h2>
-                          <div class="tm-gallery">
-                            <div class="tm-gallery-item">                        
-                              <figure class="effect-bubba">
-                                <img src="img/gallery/01.jpg" alt="Our Work Image" class="img-fluid">
-                                <figcaption>
-                                  <h2>Fresh <span>Bubba</span></h2>
-                                  <p>Bubba likes to appear out of thin air.</p>
-                                  <a href="img/gallery/large/01.jpg">View more</a>
-                                </figcaption>
-                              </figure>
-                            </div>
-                            <div class="tm-gallery-item">
-                              <figure class="effect-bubba">
-                                <img src="img/gallery/02.jpg" alt="Our Work Image" class="img-fluid">
-                                <figcaption>
-                                  <h2>Fresh <span>Bubba</span></h2>
-                                  <p>Bubba likes to appear out of thin air.</p>
-                                  <a href="img/gallery/large/02.jpg">View more</a>
-                                </figcaption>
-                              </figure>
-                            </div>
-                            <div class="tm-gallery-item">
-                              <figure class="effect-bubba">
-                                <img src="img/gallery/03.jpg" alt="Our Work Image" class="img-fluid">
-                                <figcaption>
-                                  <h2>Fresh <span>Bubba</span></h2>
-                                  <p>Bubba likes to appear out of thin air.</p>
-                                  <a href="img/gallery/large/03.jpg">View more</a>
-                                </figcaption>
-                              </figure>
-                            </div>
-                            <div class="tm-gallery-item">
-                              <figure class="effect-bubba">
-                                <img src="img/gallery/04.jpg" alt="Our Work Image" class="img-fluid">
-                                <figcaption>
-                                  <h2>Fresh <span>Bubba</span></h2>
-                                  <p>Bubba likes to appear out of thin air.</p>
-                                  <a href="img/gallery/large/04.jpg">View more</a>
-                                </figcaption>
-                              </figure>
-                            </div>
-                            <div class="tm-gallery-item">
-                              <figure class="effect-bubba">
-                                <img src="img/gallery/05.jpg" alt="Our Work Image" class="img-fluid">
-                                <figcaption>
-                                  <h2>Fresh <span>Bubba</span></h2>
-                                  <p>Bubba likes to appear out of thin air.</p>
-                                  <a href="img/gallery/large/05.jpg">View more</a>
-                                </figcaption>
-                              </figure>
-                            </div>
-                            <div class="tm-gallery-item">
-                              <figure class="effect-bubba">
-                                <img src="img/gallery/06.jpg" alt="Our Work Image" class="img-fluid">
-                                <figcaption>
-                                  <h2>Fresh <span>Bubba</span></h2>
-                                  <p>Bubba likes to appear out of thin air.</p>
-                                  <a href="img/gallery/large/06.jpg">View more</a>
-                                </figcaption>
-                              </figure>
-                            </div>
-                            <div class="tm-gallery-item">
-                              <figure class="effect-bubba">
-                                <img src="img/gallery/07.jpg" alt="Our Work Image" class="img-fluid">
-                                <figcaption>
-                                  <h2>Fresh <span>Bubba</span></h2>
-                                  <p>Bubba likes to appear out of thin air.</p>
-                                  <a href="img/gallery/large/07.jpg">View more</a>
-                                </figcaption>
-                              </figure>
-                            </div>
-                            <div class="tm-gallery-item">
-                              <figure class="effect-bubba">
-                                <img src="img/gallery/08.jpg" alt="Our Work Image" class="img-fluid">
-                                <figcaption>
-                                  <h2>Fresh <span>Bubba</span></h2>
-                                  <p>Bubba likes to appear out of thin air.</p>
-                                  <a href="img/gallery/large/08.jpg">View more</a>
-                                </figcaption>
-                              </figure>
-                            </div>
-                          </div>
-                      </div>                        
-                    </div>                  
-                  </div>     
-              </div>         
-            </section>
-          </div>
-            
+                <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                <div class="tm-gallery-wrap">
+                  <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Packing Lists</h2>
+                  <div id = "listContainer">
+                  </div>                 
+                </div>                  
+                </div>     
+            </div>  </section>
+          </div> 
+
           <div class="tm-section-wrap bg-white">
-            <section id="clients" class="row tm-section">
-              <div class="col-12 tm-section-pad">
-                  <div class="tm-flex-item-left">
-                      <div class="tm-w-80">
-                          <h2 class="tm-color-primary tm-section-title mb-4">Our Clients</h2>
-                          <p class="mb-5">
-                            Aenean est augue, iaculis ut arcu a, cursus tempus eros.
-                            Maecenas ut efficitur lectus, vel commodo nibh. Vivamus
-                            consequat massa non euismod facilisis. Morbi assumsan non libero
-                            a vehicula. Donec blandit suscipit magna sit amet elementum.
-                          </p>
+            <section id="signup" class="row tm-section">
+              <div class="col-12" id = "signupForm" hidden>
+                <div class="tm-contact-form-wrap"> 
+                  <form class="tm-contact-form">
+                  <div class="form-group" id = "signUpHeader">
+                  <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Sign Up</h2>
+                  <br>
+                  </div>
+                      <div class="form-group">
+                        <input type="text" id="signUsername" name="username" value = "" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Username" required />
                       </div>
-                      
-                      <div class="row tm-clients-images">
-                        <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-                          <a href="https://google.com">
-                            <img src="img/client-1.png" alt="Client Image" class="img-fluid tm-client-img" />
-                          </a>                          
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-                          <a href="https://facebook.com">
-                            <img src="img/client-2.png" alt="Client Image" class="img-fluid tm-client-img" />
-                          </a>                          
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-                          <a href="https://twitter.com">
-                            <img src="img/client-3.png" alt="Client Image" class="img-fluid tm-client-img" />
-                          </a>                          
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-                          <a href="https://instagram.com">
-                            <img src="img/client-4.png" alt="Client Image" class="img-fluid tm-client-img" />
-                          </a>                          
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-                            <a href="https://google.com">
-                              <img src="img/client-5.png" alt="Client Image" class="img-fluid tm-client-img" />
-                            </a>                          
-                          </div>
-                          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-                            <a href="https://facebook.com">
-                              <img src="img/client-6.png" alt="Client Image" class="img-fluid tm-client-img" />
-                            </a>                          
-                          </div>
-                          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-                            <a href="https://twitter.com">
-                              <img src="img/client-7.png" alt="Client Image" class="img-fluid tm-client-img" />
-                            </a>                          
-                          </div>
-                          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-                            <a href="https://instagram.com">
-                              <img src="img/client-8.png" alt="Client Image" class="img-fluid tm-client-img" />
-                            </a>                          
-                          </div>
+                      <div class="form-group">
+                      <input type="password" id="signPassword" name="password" value = "" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Password" required />
                       </div>
-                  </div> 
-              </div>                             
-            </section>
-          </div>
-            
-          <div class="tm-section-wrap bg-white">
-            <section id="talk" class="row tm-section">
-                <div class="col-xl-6 mb-5">
-                  <div class="tm-double-border-1 tm-border-gray">
-                    <div class="tm-double-border-2 tm-border-gray tm-box-pad">
-                        <h2 class="tm-color-primary tm-section-title mb-4">Talk to Us</h2>
-                        <p class="mb-4">
-                          Sed aliquet, nibh ac hendrerit faucibus, tellus metus viverra
-                          tellus, vel volutpat purus orci ac ex.
-                        </p>
-                        <p class="mb-3">
-                          120-240 Orci varius natoque penatibus, <br>
-                          parturient montes, 10660 <br>
-                          nasvetur ridiculus mus
-                        </p>
-                    </div>                    
-                  </div>                  
-                </div>
-                <div class="col-xl-6 mb-5">
-                  <div class="tm-contact-form-wrap">
-                    <form action="" method="POST" class="tm-contact-form">
-                        <div class="form-group">
-                          <input type="text" id="contact_name" name="contact_name" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Name" required="" />
-                        </div>
-                        <div class="form-group">
-                          <input type="email" id="contact_email" name="contact_email" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Email" required="" />
-                        </div>
-                
-                        <div class="form-group">
-                          <textarea rows="4" id="contact_message" name="contact_message" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Message..." required=""></textarea>
-                        </div>
-                
-                        <div class="form-group mb-0">
-                          <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
-                            SEND
-                          </button>
-                        </div>
-                      </form>
-                  </div>                    
-                </div>
+                      <div class="form-group">
+                      <input type="password" id="passwordConfirmation" value = "" name="password_confirmation" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Confirm Password" required />
+                      </div>
+                      <div class="form-group mb-0">
+                        
+                        <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+                          SIGNUP
+                        </button>
+                      </div>
+                    </form>
+                </div>  
               </section>
-          </div>
+          </div> 
+
+          <div class="tm-section-wrap bg-white">
+            <section id="login" class="row tm-section">
+              <div class="col-12" id = "loginForm" hidden>
+                <div class="tm-contact-form-wrap"> 
+                  <form class="tm-contact-form">
+                    <div class="form-group" id="logInHeader">
+                    <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Log In</h2>
+                    <br>
+                    </div>
+                        <div class="form-group">
+                          <input type="text" id="logUsername" name="username" value = "" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Username" required />
+                        </div>
+                        <div class="form-group">
+                        <input type="password" id="logPassword" name="password" value = "" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Password" required />
+                        </div>
+                          
+                          <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+                            LOG IN
+                          </button>
+                          </form>
+                        </div>
+                        </div>
+                      </section>
+                      </div>
+
+
+       <div class="tm-section-wrap bg-white">
+          <section id="find" class="row tm-section">
+             <div class="col-12">
+              <div id = "searchForm" hidden>              
+                <div class="w-100 tm-double-border-1 tm-border-gray">
+                   <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                    <div class="tm-gallery-wrap">
+                       <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Find a Campsite</h2>
+                                                
+                       <form id = "create-trip" class = "mb-5">
+                       <label for="park"> Choose a Park:</label><br>
+                        <select id="parkCode" name = "parkCode" required>
+                          <option value = "" disabled selected hidden> Choose a Park</option>
+                          <option value =  "ABLI">  Abraham Lincoln Birthplace NHS  </option>
+                          <option value ="ACAD">  Acadia NP </option>
+                          <option value ="ADAM">  Adams National Historical Park  </option>
+                          <option value = "ADM" >  Administration  </option>
+                          <option value ="AGFO">  Agate Fossil Beds NM  </option>
+                          <option value ="AKRO">  Alaska Region </option>
+                          <option value ="AKSO">  Alaska Support Office </option>
+                          <option value ="ALAG">  Alagnak Wild River  </option>
+                          <option value ="ALFL">  Alibates Flint Quarries NM  </option>
+                          <option value ="ALPO">  Allegheny Portage Railroad NHS  </option>
+                          <option value ="AMIS">  Amistad National Recreation Area  </option>
+                          <option value ="AMME">  American Memorial Park  </option>
+                          <option value ="ANCH">  Alaska Public Lands Info Ctr - Anchorage  </option>
+                          <option value ="ANDE">  Andersonville NHS </option>
+                          <option value ="ANIA">  Aniakchak NM  </option>
+                          <option value ="ANIA">  Aniakchak NPres </option>
+                          <option value ="ANJO">  Andrew Johnson NHS  </option>
+                          <option value ="ANTC">  Antietam National Cemetery  </option>
+                          <option value ="ANTI">  Antietam NB </option>
+                          <option value ="APCO">  Appomattox Court House NHP  </option>
+                          <option value ="APIS">  Apostle Islands NL  </option>
+                          <option value ="APPA">  Appalachian NST </option>
+                          <option value ="APPA">  Appalachian NST Land Acquisition FO </option>
+                          <option value ="ARCH">  Arches NP </option>
+                          <option value ="ARHO">  Arlington House, The Robert E. Lee Mem  </option>
+                          <option value ="ARPO">  Arkansas Post NMem  </option>
+                          <option value ="ASIS">  Assateague Island NS  </option>
+                          <option value ="AZRU">  Aztec Ruins NM  </option>
+                          <option value ="BADL">  Badlands NP </option>
+                          <option value ="BAND">  Bandelier NM  </option>
+                          <option value ="BAWA">  Baltimore-Washington Parkway  </option>
+                          <option value ="BEFR">  Benjamin Franklin NM  </option>
+                          <option value ="BELA">  Bering Land Bridge Npres  </option>
+                          <option value ="BEOL">  Bent's Old Fort NHS </option>
+                          <option value ="BIBE">  Big Bend NP </option>
+                          <option value ="BICA">  Bighorn Canyon NRA  </option>
+                          <option value ="BICY">  Big Cypress Npres </option>
+                          <option value ="BIHO">  Big Hole NB </option>
+                          <option value ="BISC">  Biscayne NP </option>
+                          <option value ="BISO">  Big South Fork NRRA </option>
+                          <option value ="BITH">  Big Thicket National Preserve </option>
+                          <option value ="BLAC">  Blackstone River Valley National Heritage Corridor  </option>
+                          <option value ="BLCA">  Black Canyon of the Gunnison NP </option>
+                          <option value ="BLRI">  Blue Ridge Parkway  </option>
+                          <option value ="BLUE">  Bluestone NSR </option>
+                          <option value ="BOAF">  Boston African-American NHS </option>
+                          <option value ="BOHA">  Boston Harbor Islands NRA </option>
+                          <option value ="BOSO">  Boston Support Office </option>
+                          <option value ="BOST">  Boston NHP  </option>
+                          <option value ="BOWA">  Booker T. Washington NM </option>
+                          <option value ="BRCA">  Bryce Canyon NP </option>
+                          <option value ="BRCR">  Brices Cross Roads NBS  </option>
+                          <option value ="BRVB">  Brown v. Board of Education NHS </option>
+                          <option value ="BUFF">  Buffalo National River  </option>
+                          <option value ="BUIS">  Buck Island Reef NM </option>
+                          <option value ="CABR">  Cabrillo NM </option>
+                          <option value ="CACH">  Canyon de Chelly NM </option>
+                          <option value ="CACL">  Castle Clinton NM </option>
+                          <option value ="CACO">  Cape Cod NS </option>
+                          <option value ="CAGR">  Casa Grande Ruins NM  </option>
+                          <option value ="CAHA">  Cape Hatteras NS  </option>
+                          <option value ="CAKR">  Cape Krusenstern NM </option>
+                          <option value ="CALI">  California NHT  </option>
+                          <option value ="CALO">  Cape Lookout NS </option>
+                          <option value ="CANA">  Canaveral NS  </option>
+                          <option value ="CANY">  Canyonlands NP  </option>
+                          <option value ="CARE">  Capitol Reef NP </option>
+                          <option value ="CARI">  Cane River Creole NHP </option>
+                          <option value ="CARL">  Carl Sandburg Home NHS  </option>
+                          <option value ="CASA">  Castillo de San Marcos NM </option>
+                          <option value ="CATO">  Catoctin Mountain Park  </option>
+                          <option value ="CAVE">  Carlsbad Caverns NP </option>
+                          <option value ="CAVO">  Capulin Volcano NM  </option>
+                          <option value ="CCSO">  Columbia Cascades Support Office  </option>
+                          <option value ="CEBR">  Cedar Breaks NM </option>
+                          <option value ="CHAM">  Chamizal NMem </option>
+                          <option value ="CHAT">  Chattahoochee River NRA </option>
+                          <option value ="CHCH">  Chickamauga & Chattanooga NMP </option>
+                          <option value ="CHCU">  Chaco Culture NHP </option>
+                          <option value ="CHIC">  Chickasaw NRA </option>
+                          <option value ="CHIR">  Chiricahua NM </option>
+                          <option value ="CHIS">  Channel Islands NP  </option>
+                          <option value ="CHOH">  Chesapeake & Ohio Canal NHP </option>
+                          <option value ="CHPI">  Charles Pinckney NHS  </option>
+                          <option value ="CHPO">  Chicago Portage NHS </option>
+                          <option value ="CHRI">  Christiansted NHS </option>
+                          <option value ="CIRO">  City of Rocks N RES </option>
+                          <option value ="CLBA">  Clara Barton NHS  </option>
+                          <option value ="CMCO">  Claude Moore Colonial Farm  </option>
+                          <option value ="CODA">  Lake Roosevelt NRA  </option>
+                          <option value ="COLM">  Colorado NM </option>
+                          <option value ="COLO">  Colonial NHP  </option>
+                          <option value ="CORO">  Coronado NMem </option>
+                          <option value ="COSW">  Congaree Swamp NM </option>
+                          <option value ="COWP">  Cowpens NB  </option>
+                          <option value ="CRLA">  Crater Lake NP  </option>
+                          <option value ="CRMO">  Craters of the Moon NM  </option>
+                          <option value ="CRSPP">  National Center for Cultural Resources  </option>
+                          <option value ="CUGA">  Cumberland Gap NHP  </option>
+                          <option value ="CUIS">  Cumberland Island NS  </option>
+                          <option value ="CURE">  Curecanti NRA </option>
+                          <option value ="CUVA">  Cuyahoga Valley NP  </option>
+                          <option value ="DAAV">  Dayton Aviation Heritage NHP  </option>
+                          <option value ="DABE">  David Berger NMEM </option>
+                          <option value ="DELA">  Delaware NSR  </option>
+                          <option value ="DELE">  Delaware & Lehigh National Heritage Corridor  </option>
+                          <option value ="DENA">  Denali NP </option>
+                          <option value ="DENA">  Denali NPres  </option>
+                          <option value ="DEPO">  Devils Postpile National Monument </option>
+                          <option value ="DESO">  De Soto Nmem  </option>
+                          <option value ="DETO">  Devils Tower NM </option>
+                          <option value ="DEVA">  Death Valley NP </option>
+                          <option value ="DEWA">  Delaware Water Gap NRA  </option>
+                          <option value ="DINO">  Dinosaur NM </option>
+                          <option value ="DRTO">  Dry Tortugas NP </option>
+                          <option value ="DSC">  Denver Service Center </option>
+                          <option value ="EBLA">  Ebey's Landing NH Reserve </option>
+                          <option value ="EDAL">  Edgar Allan Poe NHS </option>
+                          <option value ="EDIS">  Edison NHS  </option>
+                          <option value ="EFMO">  Effigy Mounds NM  </option>
+                          <option value ="EISE">  Eisenhower NHS  </option>
+                          <option value ="ELIS">  Ellis Island Immigration Museum </option>
+                          <option value ="ELMA">  El Malpais NM </option>
+                          <option value ="ELMO">  El Morro NM </option>
+                          <option value ="ELRO">  Eleanor Roosevelt NHS </option>
+                          <option value ="EUON">  Eugene O'Neill NHS  </option>
+                          <option value ="EVER">  Everglades NP </option>
+                          <option value ="FAIR">  Alaska Public Lands Info Ctr - Fairbanks  </option>
+                          <option value ="FAMA">  Father Marquette NM </option>
+                          <option value ="FARM">  Farmington Wild and Scenic River  </option>
+                          <option value ="FEHA">  Federal Hall NMem </option>
+                          <option value ="FIIS">  Fire Island NS  </option>
+                          <option value ="FLAG">  Flagstaff Area National Monuments </option>
+                          <option value ="FLFO">  Florissant Fossil Beds NM </option>
+                          <option value ="FOBO">  Fort Bowie NHS  </option>
+                          <option value ="FOBU">  Fossil Butte NM </option>
+                          <option value ="FOCA">  Fort Caroline NMem  </option>
+                          <option value ="FOCL">  Fort Clatsop NMem </option>
+                          <option value ="FODA">  Fort Davis NHS  </option>
+                          <option value ="FODC">  Fort Donelson National Cemetery </option>
+                          <option value ="FODO">  Fort Donelson NB  </option>
+                          <option value ="FOFR">  Fort Frederica NM </option>
+                          <option value ="FOLA">  Fort Laramie NHS  </option>
+                          <option value ="FOLS">  Fort Larned NHS </option>
+                          <option value ="FOMA">  Fort Matanzas NM  </option>
+                          <option value ="FOMC">  Fort McHenry NM & Historic Shrine </option>
+                          <option value ="FONE">  Fort Necessity NB </option>
+                          <option value ="FOPO">  Fort Point NHS  </option>
+                          <option value ="FOPU">  Fort Pulaski NM </option>
+                          <option value ="FORA">  Fort Raleigh NHS  </option>
+                          <option value ="FOSC">  Fort Scott NHS  </option>
+                          <option value ="FOSM">  Fort Smith NHS  </option>
+                          <option value ="FOST">  Fort Stanwix NM </option>
+                          <option value ="FOSU">  Fort Sumter NM  </option>
+                          <option value ="FOTH">  Ford's Theatre NHS  </option>
+                          <option value ="FOUN">  Fort Union NM </option>
+                          <option value ="FOUS">  Fort Union Trading Post NHS </option>
+                          <option value ="FOVA">  Fort Vancouver NHS  </option>
+                          <option value ="FOWA">  Fort Washington Park  </option>
+                          <option value ="FRDO">  Frederick Douglass NHS  </option>
+                          <option value ="FRED">  Fredericksburg National Cemetery  </option>
+                          <option value ="FRHI">  Friendship Hill National Historic Site  </option>
+                          <option value ="FRLA">  Frederick Law Olmsted National Historic Site  </option>
+                          <option value ="FRSP">  Fredericksburg & Spotsylvania NMP </option>
+                          <option value ="GAAR">  Gates of the Arctic NP  </option>
+                          <option value ="GAAR">  Gates of the Arctic NPres </option>
+                          <option value ="GARI">  Gauley River NRA  </option>
+                          <option value ="GATE">  Gateway National Recreation Area  </option>
+                          <option value ="GEGR">  General Grant NMem  </option>
+                          <option value ="GERO">  George Rogers Clark NHP </option>
+                          <option value ="GETC">  Gettysburg National Cemetery  </option>
+                          <option value ="GETT">  Gettysburg NMP  </option>
+                          <option value ="GEWA">  George Washington Birthplace NM </option>
+                          <option value ="GICL">  Gila Cliff Dwellings NM </option>
+                          <option value ="GLAC">  Glacier NP  </option>
+                          <option value ="GLBA">  Glacier Bay NP  </option>
+                          <option value ="GLBA">  Glacier Bay NPres </option>
+                          <option value ="GLCA">  Glen Canyon NRA </option>
+                          <option value ="GLDE">  Gloria Dei (Old Swedes) Church NHS  </option>
+                          <option value ="GLEC">  Glen Echo Park  </option>
+                          <option value ="GLOR">  Glorieta Battlefield  </option>
+                          <option value ="GOGA">  Golden Gate NRA </option>
+                          <option value ="GOSP">  Golden Spike NHS  </option>
+                          <option value ="GRBA">  Great Basin NP  </option>
+                          <option value ="GRCA">  Grand Canyon NP </option>
+                          <option value ="GREE">  Greenbelt Park  </option>
+                          <option value ="GRFA">  Great Falls Park  </option>
+                          <option value ="GRKO">  Grant-Kohrs Ranch NHS </option>
+                          <option value ="GRON">  Great Onyx Job Corps Civ Cons Center  </option>
+                          <option value ="GRPO">  Grand Portage NM  </option>
+                          <option value ="GRSA">  Great Sand Dunes NM </option>
+                          <option value ="GRSA">  Great Sand Dunes Npres  </option>
+                          <option value ="GRSM">  Great Smoky Mountains NP  </option>
+                          <option value ="GRSP">  Green Springs National Historic Landmark District </option>
+                          <option value ="GRTE">  Grand Teton NP  </option>
+                          <option value ="GUCO">  Guilford Courthouse NMP </option>
+                          <option value ="GUIS">  Gulf Islands NS </option>
+                          <option value ="GUMO">  Guadalupe Mountains NP  </option>
+                          <option value ="GWCA">  George Washington Carver NM </option>
+                          <option value ="GWMP">  George Washington Memorial Parkway  </option>
+                          <option value ="HAFE">  Harpers Ferry NHP </option>
+                          <option value ="HAFO">  Hagerman Fossil Beds NM </option>
+                          <option value ="HAGR">  Hamilton Grange NMem  </option>
+                          <option value ="HALE">  Haleakala NP  </option>
+                          <option value ="HAMP">  Hampton NHS </option>
+                          <option value ="HAVO">  Hawaii Volcanoes NP </option>
+                          <option value ="HEHO">  Herbert Hoover NHS  </option>
+                          <option value ="HFC">  Harpers Ferry Center  </option>
+                          <option value ="HFJC">  Harpers Ferry Job Corps Civ Cons Ctr  </option>
+                          <option value ="HOAL">  Horace M. Albright Training Center  </option>
+                          <option value ="HOBE">  Horseshoe Bend NMP  </option>
+                          <option value ="HOCU">  Hopewell Culture NHP  </option>
+                          <option value ="HOFU">  Hopewell Furnace NHS  </option>
+                          <option value ="HOME">  Homestead NM of America </option>
+                          <option value ="HOSP">  Hot Springs NP  </option>
+                          <option value ="HOVE">  Hovenweep NM  </option>
+                          <option value ="HPTC">  Historic Preservation Training Center </option>
+                          <option value ="HSTR">  Harry S Truman NHS  </option>
+                          <option value ="HUTR">  Hubbell Trading Post NHS  </option>
+                          <option value ="IATR">  Ice Age NST </option>
+                          <option value ="ICAG">  Ice Age National Scientific Reserve </option>
+                          <option value ="ICRC">  Intermountain Support Office  </option>
+                          <option value ="ILMI">  Illinois & Michigan Canal National Heritage Corridor  </option>
+                          <option value ="IMDE">  Denver Support Office </option>
+                          <option value ="IMRO">  Intermountain Region  </option>
+                          <option value ="IMSF">  Intermountain Support Office - Santa Fe </option>
+                          <option value ="INDE">  Independence NHP  </option>
+                          <option value ="INDU">  Indiana Dunes National Lakeshore  </option>
+                          <option value ="ISRO">  Isle Royale NP  </option>
+                          <option value ="JAGA">  James A. Garfield NHS </option>
+                          <option value ="JAME">  Jamestown NHS </option>
+                          <option value ="JAZZ">  New Orleans Jazz NHP  </option>
+                          <option value ="JECA">  Jewel Cave NM </option>
+                          <option value ="JEFF">  Jefferson National Expansion Memorial </option>
+                          <option value ="JEFM">  Thomas Jefferson Memorial </option>
+                          <option value ="JELA">  Jean Lafitte NHP & PRES </option>
+                          <option value ="JICA">  Jimmy Carter NHS  </option>
+                          <option value ="JODA">  John Day Fossil Beds NM </option>
+                          <option value ="JODR">  John D. Rockefeller Jr. Mem. Parkway  </option>
+                          <option value ="JOFI">  John Fitzgerald Kennedy NHS </option>
+                          <option value ="JOFL">  Johnstown Flood Nmem  </option>
+                          <option value ="JOMU">  John Muir NHS </option>
+                          <option value ="JOTR">  Joshua Tree NP  </option>
+                          <option value ="KAHO">  Kaloko-Honokohau NHP  </option>
+                          <option value ="KALA">  Kalaupapa NHP </option>
+                          <option value ="KATM">  Katmai NP </option>
+                          <option value ="KATM">  Katmai NPres  </option>
+                          <option value ="KEFJ">  Kenai Fjords NP </option>
+                          <option value ="KEMO">  Kennesaw Mountain NBP </option>
+                          <option value ="KEWE">  Keweenaw NHP  </option>
+                          <option value ="KICA">  Kings Canyon NP </option>
+                          <option value ="KIMO">  Kings Mountain NMP  </option>
+                          <option value ="KLGO">  Klondike Gold Rush NHP  </option>
+                          <option value ="KLSE">  Klondike Gold Rush NHP--Seattle Unit  </option>
+                          <option value ="KNRI">  Knife River Indian Villages NHS </option>
+                          <option value ="KOVA">  Kobuk Valley NP </option>
+                          <option value ="LABE">  Lava Beds NM  </option>
+                          <option value ="LACH">  Lake Chelan NRA </option>
+                          <option value ="LACL">  Lake Clark NP </option>
+                          <option value ="LACL">  Lake Clark NPres  </option>
+                          <option value ="LAME">  Lake Mead NRA </option>
+                          <option value ="LAMR">  Lake Meredith NRA </option>
+                          <option value ="LAVO">  Lassen Volcanic NP  </option>
+                          <option value ="LBME">  LBJ Memorial Grove on the Potomac </option>
+                          <option value ="LECL">  Lewis & Clark NHT </option>
+                          <option value ="LIBI">  Little Bighorn Battlefield NM </option>
+                          <option value ="LIBO">  Lincoln Boyhood NMem  </option>
+                          <option value ="LIHO">  Lincoln Home NHS  </option>
+                          <option value ="LINC">  Lincoln Memorial  </option>
+                          <option value ="LIRI">  Little River Canyon Npres </option>
+                          <option value ="LIRO">  Little Rock Central High School </option>
+                          <option value ="LODI">  Long Distance Trails Group Office-Santa Fe  </option>
+                          <option value ="LODT">  Long Distance Trails Office-Salt Lake City  </option>
+                          <option value ="LONG">  Longfellow National Historic Site </option>
+                          <option value ="LOWE">  Lowell NHP  </option>
+                          <option value ="LYJO">  Lyndon B. Johnson NHP </option>
+                          <option value ="MAAC">  Maine Acadian Culture Project </option>
+                          <option value ="MABI">  Marsh-Billings-Rockefeller NHP  </option>
+                          <option value ="MACA">  Mammoth Cave NP </option>
+                          <option value ="MALU">  Martin Luther King Jr NHS </option>
+                          <option value ="MANA">  Manassas NBP  </option>
+                          <option value ="MANZ">  Manzanar NHS  </option>
+                          <option value ="MASI">  Manhattan Sites </option>
+                          <option value ="MAVA">  Martin Van Buren NHS  </option>
+                          <option value ="MAWA">  Maggie L Walker NHS </option>
+                          <option value ="MCHO">  McLoughlin House NHS  </option>
+                          <option value ="MEAF">  US/Mexico Affairs Office  </option>
+                          <option value ="MEVE">  Mesa Verde NP </option>
+                          <option value ="MIMA">  Minute Man NHP  </option>
+                          <option value ="MIMI">  Minuteman Missile NHS </option>
+                          <option value ="MISS">  Mississippi NRRA  </option>
+                          <option value ="MMBC">  Mary McLeod Bethune Council House NHS </option>
+                          <option value ="MNRR">  Missouri National Recreational River  </option>
+                          <option value ="MOCA">  Montezuma Castle NM </option>
+                          <option value ="MOCR">  Moores Creek NB </option>
+                          <option value ="MOJA">  Mojave National Preserve  </option>
+                          <option value ="MONO">  Monocacy NB </option>
+                          <option value ="MOPI">  Mormon Pioneer NHT  </option>
+                          <option value ="MORA">  Mount Rainier NP  </option>
+                          <option value ="MORR">  Morristown NHP  </option>
+                          <option value ="MORU">  Mount Rushmore Nmem </option>
+                          <option value ="MRCC">  Mississippi River Corridor Study Comm.  </option>
+                          <option value ="MUWO">  Muir Woods NM </option>
+                          <option value ="MWAC">  Midwest Archeological Center  </option>
+                          <option value ="MWRO">  Midwest Region  </option>
+                          <option value ="MWSO">  Midwest Support Office  </option>
+                          <option value ="NABR">  Natural Bridges NM  </option>
+                          <option value ="NACC">  Francis Scott Key Memorial  </option>
+                          <option value ="NACC">  Franklin Delanor Roosevelt Memorial Park  </option>
+                          <option value ="NACC">  National Capital Parks-Central  </option>
+                          <option value ="NACE">  National Capital Parks-East </option>
+                          <option value ="NAMA">  National Mall </option>
+                          <option value ="NATC">  Natchez NHP </option>
+                          <option value ="NATR">  Natchez Trace NST </option>
+                          <option value ="NATR">  Natchez Trace Parkway </option>
+                          <option value ="NAVA">  Navajo NM </option>
+                          <option value ="NCR">  Museum Resource Center  </option>
+                          <option value ="NCRC">  Northeast Cultural Resources Center </option>
+                          <option value ="NCRC">  National Center for Recreation and Conservation </option>
+                          <option value ="NCRO">  National Capital Region </option>
+                          <option value ="NCSO">  National Capital Support Office </option>
+                          <option value ="NEBE">  New Bedford Whaling NHP </option>
+                          <option value ="NEJE">  New Jersey Coastal Heritage Trail Route </option>
+                          <option value ="NEPE">  Nez Perce NHP </option>
+                          <option value ="NERI">  New River Gorge NR  </option>
+                          <option value ="NERO">  Northeast Region  </option>
+                          <option value ="NERO">  NER Land Resources Program Center </option>
+                          <option value ="NICO">  Nicodemus NHS </option>
+                          <option value ="NIFC">  Fire Management Program Center  </option>
+                          <option value ="NIOB">  Niobrara National Scenic River  </option>
+                          <option value ="NISI">  Ninety Six NHS  </option>
+                          <option value ="NOAT">  Noatak Npres  </option>
+                          <option value ="NOCA">  North Cascades NP </option>
+                          <option value ="NOCO">  North Country NST </option>
+                          <option value ="none">  Great Egg Harbor Scenic &RR </option>
+                          <option value ="none">  Pinelands National Reserve  </option>
+                          <option value ="NPS">  Office of Equal Employment Opportunity  </option>
+                          <option value ="NPS">  Office of External Affairs  </option>
+                          <option value ="NPS">  Office of Legislative & Congressional Affairs </option>
+                          <option value ="NPS">  Office of Policy  </option>
+                          <option value ="NPS">  Office of Communications  </option>
+                          <option value ="NPS">  Office of Special Programs  </option>
+                          <option value ="NPS">  Office of the American Indian Liaison </option>
+                          <option value ="NPS">  Office of the Director  </option>
+                          <option value ="NPS">  Office of International Affairs </option>
+                          <option value ="NPSA">  National Park of American Samoa </option>
+                          <option value ="NRLO">  New River Gorge Land Acq. Proj. Office  </option>
+                          <option value ="NWAK">  Western Arctic National Parklands </option>
+                          <option value ="OBRI">  Obed Wild and Scenic River  </option>
+                          <option value ="OCJO">  Oconaluftee Job Corps Civ. Cons. Center </option>
+                          <option value ="OCMU">  Ocmulgee NM </option>
+                          <option value ="OFIE">  Federal Law Enforcement Training Center </option>
+                          <option value ="OKCI">  Oklahoma City National Memorial </option>
+                          <option value ="OLYM">  Olympic NP  </option>
+                          <option value ="OPOT">  Old Post Office Observation Tower </option>
+                          <option value ="ORCA">  Oregon Caves NM </option>
+                          <option value ="OREG">  Oregon NHT  </option>
+                          <option value ="ORPI">  Organ Pipe Cactus NM  </option>
+                          <option value ="OVVI">  Overmountain Victory NHT  </option>
+                          <option value ="OZAR">  Ozark National Scenic Riverways </option>
+                          <option value ="PAAL">  Palo Alto Battlefield NHS </option>
+                          <option value ="PAAV">  Pennsylvania Avenue NHS </option>
+                          <option value ="PAIS">  Padre Island NS </option>
+                          <option value ="PECO">  Pecos NHP </option>
+                          <option value ="PEFO">  Petrified Forest NP </option>
+                          <option value ="PERI">  Pea Ridge NMP </option>
+                          <option value ="PETE">  Petersburg NB </option>
+                          <option value ="PETR">  Petroglyph NM </option>
+                          <option value ="PEVI">  Perry's Victory & Internatl Peace Mem.  </option>
+                          <option value ="PGSO">  Pacific Great Basin Support Office  </option>
+                          <option value ="PHSO">  Philadelphia Support Office </option>
+                          <option value ="PIMA">  Hohokam Pima NM </option>
+                          <option value ="PINN">  Pinnacles NM  </option>
+                          <option value ="PIPE">  Pipestone NM  </option>
+                          <option value ="PIRO">  Pictured Rocks NL </option>
+                          <option value ="PISC">  Piscataway Park </option>
+                          <option value ="PISO">  Pacific Islands Support Office  </option>
+                          <option value ="PISP">  Pipe Spring NM  </option>
+                          <option value ="POEX">  Pony Express NHT  </option>
+                          <option value ="POGR">  Poplar Grove National Cemetery  </option>
+                          <option value ="POHE">  Potomac Heritage NST  </option>
+                          <option value ="POPO">  Poverty Point NM  </option>
+                          <option value ="PORE">  Point Reyes NS  </option>
+                          <option value ="PRES">  Presidio of San Francisco </option>
+                          <option value ="PRPA">  President's Park  </option>
+                          <option value ="PRWI">  Prince William Forest Park  </option>
+                          <option value ="PUHE">  Puukohola Heiau NHS </option>
+                          <option value ="PUHO">  Pu'uhonua o Honaunau NHP  </option>
+                          <option value ="PWRO">  Pacific West Region </option>
+                          <option value ="RABR">  Rainbow Bridge NM </option>
+                          <option value ="REDW">  Redwood NP  </option>
+                          <option value ="RICH">  Richmond NBP  </option>
+                          <option value ="RIGR">  Rio Grande WSR  </option>
+                          <option value ="ROCA">  Roosevelt Campobello International Park </option>
+                          <option value ="ROCR">  Rock Creek Park </option>
+                          <option value ="ROLA">  Ross Lake NRA </option>
+                          <option value ="ROMO">  Rocky Mountain NP </option>
+                          <option value ="ROVA">  Home of Franklin D. Roosevelt NHS </option>
+                          <option value ="ROVA">  Roosevelt-Vanderbilt Headquarters </option>
+                          <option value ="ROWI">  Roger Williams Nmem </option>
+                          <option value ="RTCA">  Rivers, Trails, and Conservation Assistance </option>
+                          <option value ="RUCA">  Russell Cave NM </option>
+                          <option value ="SAAN">  San Antonio Missions NHP  </option>
+                          <option value ="SACN">  Saint Croix/Lower St. Croix NSR </option>
+                          <option value ="SACR">  Saint Croix Island International Historic Site  </option>
+                          <option value ="SAFE">  Santa Fe NHT  </option>
+                          <option value ="SAFR">  San Francisco Maritime NHP  </option>
+                          <option value ="SAGA">  Saint-Gaudens NHS </option>
+                          <option value ="SAGU">  Saguaro NP  </option>
+                          <option value ="SAHI">  Sagamore Hill NHS </option>
+                          <option value ="SAIR">  Saugus Iron Works NHS </option>
+                          <option value ="SAJH">  San Juan Island NHP </option>
+                          <option value ="SAJU">  San Juan NHS  </option>
+                          <option value ="SAMA">  Salem Maritime NHS  </option>
+                          <option value ="SAMO">  Santa Monica Mountains NRA  </option>
+                          <option value ="SAPA">  Saint Paul's Church NHS </option>
+                          <option value ="SAPU">  Salinas Pueblo Missions NM  </option>
+                          <option value ="SARA">  Saratoga NHP  </option>
+                          <option value ="SARI">  Salt River Bay NHP & Ecological Pres  </option>
+                          <option value ="SCBL">  Scotts Bluff National Monument  </option>
+                          <option value ="SEAC">  Southeast Archeological Center  </option>
+                          <option value ="SEBE">  Sewall-Belmont House NHS  </option>
+                          <option value ="SEKI">  Sequoia and Kings Canyon National Parks </option>
+                          <option value ="SERO">  Southeast Region  </option>
+                          <option value ="SESO">  Southeast Support Office  </option>
+                          <option value ="SHEN">  Shenandoah NP </option>
+                          <option value ="SHIC">  Shiloh National Cemetery  </option>
+                          <option value ="SHIL">  Shiloh NMP  </option>
+                          <option value ="SITK">  Sitka NHP </option>
+                          <option value ="SLBE">  Sleeping Bear Dunes NL  </option>
+                          <option value ="SOAR">  Southern Arizona Office </option>
+                          <option value ="SPAR">  Springfield Armory NHS  </option>
+                          <option value ="SPCO">  Intermountain Spanish Colonial Res. Ctr.  </option>
+                          <option value ="STEA">  Steamtown NHS </option>
+                          <option value ="STLI">  Statue of Liberty NM  </option>
+                          <option value ="STMA">  Stephen T. Mather Training Center </option>
+                          <option value ="STRC">  Stones River National Cemetery  </option>
+                          <option value ="STRI">  Stones River NB </option>
+                          <option value ="SUCR">  Sunset Crater Volcano NM  </option>
+                          <option value ="TAPR">  Tallgrass Prairie NPres </option>
+                          <option value ="THKO">  Thaddeus Kosciuszko NMem  </option>
+                          <option value ="THRB">  Theodore Roosevelt Birthplace NHS </option>
+                          <option value ="THRI">  Theodore Roosevelt Inaugural NHS  </option>
+                          <option value ="THRO">  Theodore Roosevelt NP </option>
+                          <option value ="THST">  Thomas Stone NHS  </option>
+                          <option value ="TICA">  Timpanogos Cave NM  </option>
+                          <option value ="TIMU">  Timucuan Ecological & Hist Preserve </option>
+                          <option value ="TONT">  Tonto NM  </option>
+                          <option value ="TOSY">  Touro Synagogue NHS </option>
+                          <option value ="TRTE">  Trail of Tears NHT  </option>
+                          <option value ="TUAI">  Tuskegee Airmen NHS </option>
+                          <option value ="TUIN">  Tuskegee Institute NHS  </option>
+                          <option value ="TUMA">  Tumacacori NHP  </option>
+                          <option value ="TUPE">  Tupelo NB </option>
+                          <option value ="TUZI">  Tuzigoot NM </option>
+                          <option value ="ULSG">  Ulysses S. Grant NHS  </option>
+                          <option value ="UNST">  United States Park Police </option>
+                          <option value ="UPDE">  Upper Delaware Scenic and Recreational River  </option>
+                          <option value ="USAR">  U.S.S. Arizona Memorial </option>
+                          <option value ="VAFO">  Valley Forge NHP  </option>
+                          <option value ="VAMA">  Vanderbilt Mansion NHS  </option>
+                          <option value ="VICC">  Vicksburg National Cemetery </option>
+                          <option value ="VICK">  Vicksburg NMP </option>
+                          <option value ="VIET">  Vietnam Veterans Memorial </option>
+                          <option value ="VIIS">  Virgin Islands NP </option>
+                          <option value ="VOYA">  Voyageurs NP  </option>
+                          <option value ="WABA">  Washita Battlefield NHS </option>
+                          <option value ="WACA">  Walnut Canyon NM  </option>
+                          <option value ="WACC">  Western Archeological & Conservation Ctr. </option>
+                          <option value ="WAPA">  War in the Pacific NHP  </option>
+                          <option value ="WASH">  Washington Monument </option>
+                          <option value ="WEFA">  Weir Farm NHS </option>
+                          <option value ="WHHO">  White House Liaison, Office of  </option>
+                          <option value ="WHIS">  Whiskeytown-Shasta-Trinity NRA  </option>
+                          <option value ="WHMI">  Whitman Mission NHS </option>
+                          <option value ="WHSA">  White Sands NM  </option>
+                          <option value ="WICA">  Wind Cave NP  </option>
+                          <option value ="WICR">  Wilson's Creek NB </option>
+                          <option value ="WIHO">  William Howard Taft NHS </option>
+                          <option value ="WORI">  Women's Rights NHP  </option>
+                          <option value ="WOTR">  Wolf Trap Farm Park for the Performing Arts </option>
+                          <option value ="WRBR">  Wright Brothers NMem  </option>
+                          <option value ="WRST">  Wrangell-St Elias NP  </option>
+                          <option value ="WRST">  Wrangell-St.Elias NPres </option>
+                          <option value ="WUPA">  Wupatki NM  </option>
+                          <option value ="YELL">  Yellowstone NP  </option>
+                          <option value ="YOHO">  Yucca House NM  </option>
+                          <option value ="YORK">  Yorktown National Cemetery  </option>
+                          <option value ="YOSE">  Yosemite NP </option>
+                          <option value ="YUCH">  Yukon-Charley Rivers Npres  </option>
+                          <option value ="ZION">  Zion NP </option>
+                        </select>
+
+                       <br><br>
+                       <input id = 'create-button' type='submit' name = 'submit' value = "Search" class = 'submit'>
+                       </form>
+                     </div>
+                    </div>
+                  </div>
+                </div>         
+              </section>
+             </div>                      
+
+             <div class="tm-section-wrap bg-white">
+              <section class="row tm-section">
+                <div class="col-12" id = "searchResults" hidden>
+                  <div class="w-100 tm-double-border-1 tm-border-gray">
+                  <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                  <div class="tm-gallery-wrap">
+                    <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Results</h2>
+                    <div id = "resultContainer">
+                    </div>                 
+                  </div>                  
+                  </div>     
+              </div>  </section>
+            </div> 
+
+
+<!--Ending div-->      </div>
+          
+
         </main>        
       </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.singlePageNav.min.js"></script>
-    <script src="js/parallax.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/trip.js"></script>
+    <script src="js/item.js"></script>
+    <script src="js/campsearch.js"></script>
+    <script src="js/userAuth.js"></script>
+    <script src="js/style/jquery.min.js"></script>
+    <script src="js/style/jquery.singlePageNav.min.js"></script>
+    <script src="js/style/parallax.min.js"></script>
     <script src="slick/slick.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/templatemo-scripts.js"></script>
+    <script src="js/style/jquery.magnific-popup.min.js"></script>
+    <script src="js/style/templatemo-scripts.js"></script>
   </body>
 </html>

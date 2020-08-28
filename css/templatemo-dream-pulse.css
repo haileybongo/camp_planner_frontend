@@ -45,7 +45,7 @@ a {
 }
 
 .tm-bg-white-transparent {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid white;
 }
 
@@ -53,7 +53,7 @@ a {
   max-width: 500px;
   width: 100%;
   padding: 55px;
-  margin-right: 40%;
+  margin-right: 450px;
   margin-left: auto;
 }
 
@@ -74,7 +74,7 @@ a {
   padding: 66px 60px;
 }
 
-#intro {
+#about {
   min-height: 100vh;
   max-width: none;
 }
@@ -672,4 +672,29 @@ figure.effect-bubba:hover p {
   .tm-box-pad {
     padding: 50px 30px;
   }
+}
+
+#trip-location{
+  width: 100%
+
+}
+
+#trip-campground{
+  width: 100%
+
+}
+#trip-arrival{
+  width: 100%
+
+}
+#trip-departure{
+  width: 100%
+
+}
+#packingList{
+  width: 100%
+}
+
+#myTrips{
+  position: 0
 }
