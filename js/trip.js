@@ -31,6 +31,8 @@ class Trip {
            <ul id="listItems">
             </ul>
          </p>
+         <button type = "button" id="delete_button"> Delete Trip </button>
+         </div>
          `
      }
 
@@ -87,6 +89,10 @@ function newTripPostFetch(location, campground, arrival, departure, item){
         }
             document.getElementById('tripDetails').innerHTML += newTrip.renderTripDetails()
             document.getElementById('listItems').innerHTML = tripList.renderList()
+            document.getElementById('delete_button').addEventListener("click", (e)=> {
+                let tripId = e.target.parentElement.dataset.id;
+                 deleteTrip(tripId);
+                 getTrips()})
 
             document.getElementById('tripDetails').scrollIntoView()
         })
@@ -100,12 +106,17 @@ function tripLinkHandler(e){
 
     e.preventDefault()
     let clickedTrip = Trip.findById(e.target.parentElement.id)
-
     let tripList = Item.findById(clickedTrip.item.id.toString(10))
 
     document.getElementById('tripDetails').innerHTML = ""
     document.getElementById('tripDetails').innerHTML += clickedTrip.renderTripDetails()
     document.getElementById('listItems').innerHTML = tripList.renderList()
+
+    document.getElementById('delete_button').addEventListener("click", (e)=> {
+        let tripId = e.target.parentElement.dataset.id;
+         deleteTrip(tripId);
+         getTrips()})
+
 
 }
 
@@ -134,3 +145,18 @@ function getTrips() {
               
     }})
     }
+
+function deleteTrip(id) {
+    fetch("http://localhost:3000/api/trips/" + `${id}`, {
+        method:"DELETE",
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem('jwt-token')}`
+        }
+    })
+    .then(response => {
+        Trip.all = [];
+        document.getElementById('tripDetails').innerHTML = ""
+        getTrips()})
+
+    }
+
