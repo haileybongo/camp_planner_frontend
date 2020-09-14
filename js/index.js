@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     navBarHandler(e))
 
+    
+
 
    if (localStorage.getItem('jwt-token') === null){
     document.getElementById("tmMainNav").hidden = true;
@@ -48,7 +50,8 @@ function navBarHandler(e){
 
     }
     else if (button === "PACKING LISTS"){
-        document.querySelector("#availableLists").hidden = false   
+        document.querySelector("#availableLists").hidden = false 
+        document.getElementById('listContainer').innerHTML = ''  
         for (const element of Item.all){
           document.getElementById('listContainer').innerHTML += `<h5 class="tm-color-primary">${element.name}</h5>`
           document.getElementById('listContainer').innerHTML += element.renderList()
