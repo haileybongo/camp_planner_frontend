@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const navBar = document.querySelector("#navBar")
 
+    getItems()
+
     navBar.addEventListener("click", (e) =>
     
     navBarHandler(e))
-
-    getItems()
 
 
    if (localStorage.getItem('jwt-token') === null){
